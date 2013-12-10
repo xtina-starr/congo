@@ -4,8 +4,6 @@ Congo::Application.routes.draw do
   
   # resources :products
 
-  # get "product/index"
-  get "/products" => "products#index" 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
