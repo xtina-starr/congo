@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @products = Product.new
   end
 
   # GET /products/1/edit
@@ -24,21 +24,20 @@ class ProductsController < ApplicationController
   # POST /products
   def create
   
-  @product = Product.new(product_params)
+  @products = Product.new(product_params)
 
-    if @product.save
-      redirect_to @product, notice: 'product was successfully created.' 
+    if @products.save
+      redirect_to @products, notice: 'product was successfully created.' 
     else
       render 'new' 
     end
   end
 
-
   # PATCH/PUT /products/1
   def update
     
-    if @product.update(product_params)
-      redirect_to @product, notice: 'product was successfully updated.'
+    if @products.update(product_params)
+      redirect_to @products, notice: 'product was successfully updated.'
     else
       render action: 'edit'
     end
@@ -46,16 +45,17 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   def destroy
-    @product.destroy
+    @products.destroy
     redirect_to products_url
   end
 
   private
+
   def set_product
-    @product = Product.find(params[:id])
+    @products = Product.find(params[:id])
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price => {}) 
+    params.require(:product).permit(:name, :description, :price) 
   end
 end
