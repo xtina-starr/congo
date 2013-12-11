@@ -7,6 +7,12 @@ describe UsersController do
       response.should be_successful
     end
   end
+
+  describe "GET 'index'" do
+    it "has title 'Welcome to Congo!'" do
+      response.should have_selector("title:contains('Welcome to Congo!')") 
+    end
+  end
 end
 
 
