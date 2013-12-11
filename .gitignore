@@ -5,8 +5,10 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore idea files
-/idea
-.idea
+.idea/*
+
+
+.DS_Store
 
 # Ignore bundler config.
 /.bundle
