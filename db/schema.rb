@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131211190307) do
   end
 
   create_table "orders", force: true do |t|
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,6 +28,14 @@ ActiveRecord::Schema.define(version: 20131211190307) do
     t.text     "name"
     t.text     "description"
     t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
