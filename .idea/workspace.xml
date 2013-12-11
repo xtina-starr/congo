@@ -16,7 +16,7 @@
     <file path="/order_item.rb" changelist="cff277ab-375b-4680-8305-83cab8ff23ef" time="1386787035135" ignored="false" />
     <file path="/20131211183247_create_order_items.rb" changelist="cff277ab-375b-4680-8305-83cab8ff23ef" time="1386787721075" ignored="false" />
     <file path="/20131211190307_rm_ids_from_order_items.rb" changelist="cff277ab-375b-4680-8305-83cab8ff23ef" time="1386788770628" ignored="false" />
-    <file path="/.gitignore" changelist="cff277ab-375b-4680-8305-83cab8ff23ef" time="1386797071935" ignored="false" />
+    <file path="/.gitignore" changelist="cff277ab-375b-4680-8305-83cab8ff23ef" time="1386797185148" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +152,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="5" selection-start="328" selection-end="328" vertical-scroll-proportion="0.19662921">
+            <state line="8" column="5" selection-start="334" selection-end="334" vertical-scroll-proportion="0.2247191">
               <folding />
             </state>
           </provider>
@@ -648,7 +648,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="5" selection-start="328" selection-end="328" vertical-scroll-proportion="0.19662921">
+        <state line="8" column="5" selection-start="334" selection-end="334" vertical-scroll-proportion="0.2247191">
           <folding />
         </state>
       </provider>
