@@ -1,14 +1,26 @@
 class User < ActiveRecord::Base
 
-	has_many :reviews
-  validates :name, :email, presence: true
-
+# attr_accessible :name, :email, :password, :password_confirmation
 
   before_save { self.email = self.email.downcase }
   before_create :create_remember_token
 
   has_many :products
   has_many :orders
+
+# Validations
+  validates :name,         presence: true,
+                           uniqueness: true
+  
+  validates :email,        presence: true,
+                           uniqueness: true
+
+  # User authentication should take care of password validation automatically. SS
+
+  # validates :password,     presence: true,
+  #                          confirmation: true
+  
+  # validates :password_confirmation,   presence: true                        
 
   # Create a new token for user
   def User.new_remember_token

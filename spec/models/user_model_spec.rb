@@ -3,6 +3,8 @@ require 'spec_helper'
 describe User do 
 
   describe "validations" do
+
+# Basic Attribute Validations 
     it "must have a name" do
       expect(User.new(:name => nil)).to be_invalid
     end
@@ -11,12 +13,18 @@ describe User do
       expect(User.new(:email => nil)).to be_invalid
     end
 
-    it "with a nil body had an error message" do
-      post = Post.new
-      post.valid?
-      expect(post.errors[:Body]).to include "Can't be blank"
-    end
+# User authentication should take care of password validation automatically. But rspec could be written. SS
 
+    # it "must have an password" do
+    #   expect(User.new(:password => nil)).to be_invalid
+    # end
+
+    # it "must have an password confirmation" do
+    #   expect(User.new(:password_confirmation => nil)).to be_invalid
+    # end
+
+
+# Assocciation Validations
     it "should have many products" do
       t = User.reflect_on_association(:products)
       t.macro.should == :has_many
