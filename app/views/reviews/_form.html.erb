@@ -1,10 +1,10 @@
-<%= form_for(@reviews) do |f| %>
-  <% if @reviews.errors.any? %>
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-      <% @reviews.errors.full_messages.each do |msg| %>
+      <% @review.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :rating %><br>
-    <%= f.number_feild :rating %>
+    <%= f.select( :rating, options_for_select(1..10) ) %>
   </div>
   
   <div class="actions">

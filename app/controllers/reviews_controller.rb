@@ -1,25 +1,21 @@
 class ReviewsController < ApplicationController
 
-	def index
-		@reviews = Review.all
-	end
-
-	def new
-		@review = Review.new
-	end
-
-	def create
-		@review = Review.new(params[:id])
+# I removed 'index' because we are not allowing users to directly access that path. they must create a review from a product.
+	
+  def create
+    @product = Product.find(params[:product_id])
+		@review = @product.reviews.build(params[:review])
 		 if @review.save
-      redirect_to @review, notice: 'review was successfully created.' 
+      redirect_to product_path(@product), notice: 'review was successfully created.' 
     else
-      render 'new' 
+      redirect_to product_path(@product), notice: 'review was not successfully created. boo!'
     end
 	end
 
 	def update  
+    @product = Product.find(params[:product_id])
     if @review.update(review_params)
-      redirect_to @review, notice: 'review was successfully updated.'
+      redirect_to product_path(@product), notice: 'review was successfully updated.'
     else
       render action: 'edit'
     end
