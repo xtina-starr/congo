@@ -9,7 +9,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    @review = Review.create
+    # used for showing all reviews:
+    @reviews = @product.reviews
+    # used for the new review form:
+    @review = Review.new
   end
 
   # GET /products/new

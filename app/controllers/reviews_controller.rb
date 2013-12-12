@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 	
   def create
     @product = Product.find(params[:product_id])
-		@review = @product.reviews.build(params[:review])
+		@review = @product.reviews.build(review_params)
 		 if @review.save
       redirect_to product_path(@product), notice: 'review was successfully created.' 
     else
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  def product_params
+  def review_params
     params.require(:review).permit(:title, :text, :rating) 
   end
 end
