@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131212204215) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   create_table "users", force: true do |t|

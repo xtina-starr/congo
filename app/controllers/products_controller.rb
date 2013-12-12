@@ -9,11 +9,15 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
+    # used for showing all reviews:
+    @reviews = @product.reviews
+    # used for the new review form:
+    @review = Review.new
   end
 
   # GET /products/new
   def new
-    @products = Product.new
+    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -24,10 +28,10 @@ class ProductsController < ApplicationController
   # POST /products
   def create
   
-  @products = Product.new(product_params)
+  @product = Product.new(product_params)
 
-    if @products.save
-      redirect_to @products, notice: 'product was successfully created.' 
+    if @product.save
+      redirect_to @product, notice: 'product was successfully created.' 
     else
       render 'new' 
     end
@@ -36,8 +40,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
     
-    if @products.update(product_params)
-      redirect_to @products, notice: 'product was successfully updated.'
+    if @product.update(product_params)
+      redirect_to @product, notice: 'product was successfully updated.'
     else
       render action: 'edit'
     end
@@ -45,14 +49,14 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   def destroy
-    @products.destroy
+    @product.destroy
     redirect_to products_url
   end
 
   private
 
   def set_product
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def product_params
