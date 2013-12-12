@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+	has_many :reviews
+  validates :name, :email, presence: true
+
+
   before_save { self.email = self.email.downcase }
   before_create :create_remember_token
 

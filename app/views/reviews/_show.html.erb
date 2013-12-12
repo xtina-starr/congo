@@ -1,0 +1,12 @@
+<% if @reviews.nil? %>
+	<%= link_to 'Be the first to review!', @product %>
+<% else %>
+	<% @reviews.each do |review| %>
+		<%= review.created_at %> <br>
+		<%= review.title %> <br>
+		<% review.rating.times do %>
+			<%= image_tag "star.png" %>
+		<% end %> <br>
+		<%= review.text %> <br>
+	<% end %>
+<% end %>

@@ -1,12 +1,17 @@
 Congo::Application.routes.draw do
 
-  resources :products
-  resources :users
+  resources :products do
+    resources :reviews
+  end
+  resources :users do
+    resources :reviews
+  end
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  
 
   # resources :products
 

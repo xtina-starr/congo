@@ -51,22 +51,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name)
     end
-
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  # Encrypt using SHA1, faster than Bcrypt. Important because it will
-  # run on every page.
-  def User.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
-  end
 end
 
 

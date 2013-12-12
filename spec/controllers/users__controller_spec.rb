@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
+
   describe "GET 'index'" do
     it "is successful" do
       get :index
@@ -9,22 +10,10 @@ describe UsersController do
   end
 
   describe "GET 'index'" do
+    render_views
     it "has title 'Welcome to Congo!'" do
-      response.should have_selector("title:contains('Welcome to Congo!')") 
+      get :index
+      expect(response.body).to include("Welcome to Congo!") 
     end
   end
 end
-
-
-  # describe "GET show" do
-  #   it "assigns the requested user to @user" 
-  #   get :show, id: user
-
-  # end
-
-
-  # it "populates an array of users" do
-  #     user = FactoryGirl.create(:user)
-  #     get :index
-  #     assigns(:users).should eq([user])
-  #   end
