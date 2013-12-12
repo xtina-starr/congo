@@ -2,18 +2,38 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @products.name %>
+  <%= @product.name %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @products.description %>
+  <%= @product.description %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @products.price %>
+  <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@products) %> |
+
+<p> 
+	<h2> average rating:</2>
+	<% if @reviews.nil? %>
+		<%= "not yet reviewed" %>
+	<% else %>
+		<% @reviews.average(:rating).to_i.times do %>
+			<%= image_tag "star.png" %>
+		<% end %>
+	<% end %>
+</p>
+
+<%= render "/reviews/show" %>
+<br>
+
+<!-- use css to make form hidden, then when user clicks button to review show form -->
+<%= render "/reviews/form" %>
+
+<br>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
