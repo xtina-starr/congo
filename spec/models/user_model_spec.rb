@@ -13,13 +13,15 @@ describe User do
       expect(User.new(:email => nil)).to be_invalid
     end
 
-    it "must have an password" do
-      expect(User.new(:password => nil)).to be_invalid
-    end
+# User authentication should take care of password validation automatically. But rspec could be written. SS
 
-    it "must have an password confirmation" do
-      expect(User.new(:password_confirmation => nil)).to be_invalid
-    end
+    # it "must have an password" do
+    #   expect(User.new(:password => nil)).to be_invalid
+    # end
+
+    # it "must have an password confirmation" do
+    #   expect(User.new(:password_confirmation => nil)).to be_invalid
+    # end
 
 
 # Assocciation Validations

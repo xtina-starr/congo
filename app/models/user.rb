@@ -12,10 +12,12 @@ class User < ActiveRecord::Base
   validates :email,        presence: true,
                            uniqueness: true   
 
-  validates :password,     presence: true,
-                           confirmation: true
+# User authentication should take care of password validation automatically. SS
+
+  # validates :password,     presence: true,
+  #                          confirmation: true
   
-  validates :password_confirmation,   presence: true
+  # validates :password_confirmation,   presence: true
 
 
 end
