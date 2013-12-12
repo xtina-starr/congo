@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, :only => [:show, :edit, :update, :destroy]
+  before_filter :create_remember_token, :only => :create_remember_token
+  
   def index
     @users = User.all
   end
 
-  def new
-    @user = User.new
+  def show
+    @users = User.all
   end
 
-
-  def edit
+  def new
     @users = User.new
   end
 
