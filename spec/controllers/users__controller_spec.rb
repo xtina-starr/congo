@@ -16,12 +16,4 @@ describe UsersController do
       expect(response.body).to include("Welcome to Congo!") 
     end
   end
-
-
-
-
-
-
-
 end
-
