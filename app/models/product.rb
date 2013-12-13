@@ -12,5 +12,11 @@ class Product < ActiveRecord::Base
     else
       find(:all)
     end
+
+
+before save  method
+convert money to cents
+
+
   end
 end
