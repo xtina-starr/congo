@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131212204215) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   create_table "users", force: true do |t|
@@ -47,7 +48,10 @@ ActiveRecord::Schema.define(version: 20131212204215) do
     t.boolean  "merchant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
     t.string   "password"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
