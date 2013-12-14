@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+  validates :price, format: { with: /\A[a-zA-Z]+\z/,
+    message: "must be in $dd.cc format" }
+
   belongs_to :users
 
   has_many :reviews
@@ -14,8 +17,9 @@ class Product < ActiveRecord::Base
     end
 
 
-before save  method
-convert money to cents
+  before_save do
+    @product.price = @product.price * 100 
+  end
 
 
 

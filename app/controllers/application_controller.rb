@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-  put current_user method here
+  # put current_user method here
 
   # User signs in, a cookie gets placed for the next 20 years.
   def sign_in(user)
