@@ -1,0 +1,21 @@
+require 'spec_helper'
+
+describe Product do 
+    
+  describe "validations" do    
+# Basic Attribute Validations 
+    it "must have a name" do
+      expect(Product.new(:name => nil)).to be_invalid
+    end
+
+    it "must have a price" do
+      expect(Product.new(:price => nil)).to be_invalid
+    end
+
+# Association Validations
+    it "should belong to a User" do
+      t = Product.reflect_on_association(:users)
+      t.macro.should == :belongs_to
+    end
+  end
+end
