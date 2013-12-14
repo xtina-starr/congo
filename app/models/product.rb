@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
-  validates :price, format: { with: /\A[a-zA-Z]+\z/,
-    message: "must be in $dd.cc format" }
+  validates :price, format: { with: /^(\d*\.\d{1,2}|\d+)$/,
+    message: "must be in $dd.cc format, ex. $15.45" }
 
   belongs_to :users
 

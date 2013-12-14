@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  mount_uploader :image, ImageUploader
   # GET /products
 
   def index
@@ -60,6 +60,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price) 
+    params.require(:product).permit(:name, :description, :price, :image, :stock) 
   end
 end
