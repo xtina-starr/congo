@@ -15,7 +15,6 @@ describe Product do
       prod_one.name != prod_two.name
     end
 
-
     it "must have a price" do
       expect(Product.new(:price => nil)).to be_invalid
     end
