@@ -27,14 +27,5 @@ class Product < ActiveRecord::Base
     @product.price = @product.price * 100 
   end
 
-
-
-# Validations
-# name must be present & unique
-# price must be present
-# price must be a number
-# price must be greater than 0
-# price must belong to user
-
   end
 end
