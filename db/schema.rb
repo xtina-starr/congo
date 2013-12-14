@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20131214204752) do
     t.integer  "product_id"
     t.string   "image"
     t.integer  "stock"
+    
   end
 
   create_table "reviews", force: true do |t|

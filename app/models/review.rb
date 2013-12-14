@@ -3,9 +3,10 @@ class Review < ActiveRecord::Base
 	belongs_to :user
 
 
-# 	# # Validations
-# rating must be present
-# rating must be integer
-# rating must be between 1 & 5
+#Validations
+  validates :title,     presence: true
+
+  validates :rating,    presence: true,
+                        numericality: { in: 1..5}
 
 end
