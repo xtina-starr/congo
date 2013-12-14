@@ -37,11 +37,9 @@ ActiveRecord::Schema.define(version: 20131214204752) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id"
-<<<<<<< HEAD
-=======
     t.string   "image"
     t.integer  "stock"
->>>>>>> master
+    
   end
 
   create_table "reviews", force: true do |t|
