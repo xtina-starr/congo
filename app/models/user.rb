@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
   has_many :orders
 
 # Validations
-  validates :name,         presence: true,
-                           uniqueness: true
+  validates :name,      presence: true,
+                        uniqueness: true
   
-  validates :email,        presence: true,
-                           uniqueness: true
+  validates :email,     presence: true,
+                        uniqueness: true
 
   # User authentication should take care of password validation automatically. SS
 
