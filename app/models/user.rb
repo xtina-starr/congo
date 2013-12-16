@@ -3,25 +3,28 @@ class User < ActiveRecord::Base
 # attr_accessible :name, :email, :password, :password_confirmation
 
   before_save { self.email = self.email.downcase }
+  before_save :encrypt_password
   before_create :create_remember_token
+  after_save :clear_password
 
   has_many :products
   has_many :orders
   has_one  :cart 
 
 # Validations
-  validates :name,         presence: true,
-                           uniqueness: true
+  validates :name,      presence: true,
+                        uniqueness: true
   
-  validates :email,        presence: true,
-                           uniqueness: true
+  validates :email,     presence: true,
+                        uniqueness: true
 
   # User authentication should take care of password validation automatically. SS
 
-  # validates :password,     presence: true,
-  #                          confirmation: true
+  validates :password,     presence: true,
+                            confirmation: true
   
-  # validates :password_confirmation,   presence: true                        
+  validates :password_confirmation,   presence: true
+  validates_length_of :password, :in => 8..20, :on => :create
 
   # Create a new token for user
   def User.new_remember_token
@@ -33,9 +36,33 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  private
-  # Method on class User - token gets added to Users database.
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
+  # Authenticate my password
+  def self.authenticate(email, password)
+    user = User.find_by_email(email)
+    if user && user.password == BCrypt::Engine.hash_secret(password, user.salt)
+      user
+    else
+      nil
     end
+  end
+
+  private
+
+  # Method on class User - token gets added to Users database.
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
+
+  def encrypt_password
+    if password.present?
+      self.salt = BCrypt::Engine.generate_salt
+      self.password = BCrypt::Engine.hash_secret(password, salt)
+    end
+  end
+
+  def clear_password
+    self.password = nil
+  end
+
+
 end

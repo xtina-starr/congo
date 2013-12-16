@@ -27,11 +27,11 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-  
+ 
   @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'product was successfully created.' 
+      redirect_to @product, notice: 'thing was successfully created.' 
     else
       render 'new' 
     end
@@ -60,6 +60,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price) 
+    params.require(:product).permit(:name, :description, :price, :image, :stock, :categories => {}) 
   end
 end

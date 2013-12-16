@@ -5,4 +5,9 @@ class Order < ActiveRecord::Base
   #validates :order_item, presence: true
   has_many :products, through: :order_items
 
+
+
+# order validations
+# must have one or more order items
+
 end
