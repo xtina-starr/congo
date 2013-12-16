@@ -27,6 +27,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Password Encryption
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
