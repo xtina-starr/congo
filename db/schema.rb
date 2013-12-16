@@ -12,6 +12,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20131214020250) do
+ActiveRecord::Schema.define(version: 20131215213220) do
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "order_items", force: true do |t|
     t.datetime "created_at"
@@ -20,7 +27,6 @@ ActiveRecord::Schema.define(version: 20131214020250) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +37,9 @@ ActiveRecord::Schema.define(version: 20131214020250) do
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
+    t.string   "image"
+    t.integer  "stock"
   end
 
   create_table "reviews", force: true do |t|
@@ -49,8 +58,10 @@ ActiveRecord::Schema.define(version: 20131214020250) do
     t.boolean  "merchant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
     t.string   "password"
     t.string   "remember_token"
+    t.string   "salt"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

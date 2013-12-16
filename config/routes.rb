@@ -3,17 +3,20 @@ Congo::Application.routes.draw do
   resources :products do
     resources :reviews
   end
+
   resources :users do
     resources :reviews
   end
-  resources :sessions, only: [:new, :create, :destroy]
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-
   
+  resources :categories
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup',  to: 'users#new',        via: 'get'
+  match '/signin',  to: 'sessions#new',     via: 'get'
+  match '/signin',  to: 'sessions#create',  via: 'post'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
 
-  # resources :products
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

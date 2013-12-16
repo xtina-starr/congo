@@ -27,6 +27,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Password Encryption
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -41,6 +44,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'carrierwave'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
