@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20131216185523) do
 
   create_table "categories", force: true do |t|
@@ -21,15 +20,13 @@ ActiveRecord::Schema.define(version: 20131216185523) do
   end
 
   create_table "order_items", force: true do |t|
-    t.integer  "quantity"
-    t.integer  "product_id"
-    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity"
   end
 
   create_table "orders", force: true do |t|
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "pending"
@@ -66,7 +63,6 @@ ActiveRecord::Schema.define(version: 20131216185523) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.string   "password"
-    t.string   "remember_token"
     t.string   "salt"
   end
 
