@@ -1,0 +1,40 @@
+<h1>Show Order</h1>
+
+<%= render 'form' %>
+<p>
+  Thank you for your order.  Your confirmation number is: <%= Order_id %>. Please print this page for your records.
+</p>
+<!--        
+<% @orders.each do |order| %>
+        
+<%= user.name %>
+orders = Order.find_by(id: <%= Order_id %>,status: "pending", price: 9000)
+<%= Time.order %>
+<%= user.name %>
+<%= link_to 'Edit', edit_user_path(user) %>
+<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> -->
+
+
+<!-- order = Order.new
+order.total = 9000
+order.customer_name = "Bookis Smuin"
+order.status = "paid"
+order.checkout_time = Time.now
+order.save
+
+order = Order.find(2)
+order.update(status: "complete")
+Order.where(status: "complete") -->
+<!-- 
+   * Each item in the order with a quantity and line-item subtotal
+   * [ ]A link to the item description page
+   * [ ]Order total price
+   * [ ]DateTime the order was placed
+   * [ ]The current status of the order
+ -->
+
+<%= link_to 'Edit', edit_user_path(@orders) %> |
+<%= link_to 'Back', users_path %>
+
+<br>

@@ -24,7 +24,7 @@ describe User do
     # end
 
 
-# Assocciation Validations
+# Association Validations
     it "should have many products" do
       t = User.reflect_on_association(:products)
       t.macro.should == :has_many
