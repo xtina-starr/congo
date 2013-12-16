@@ -5,11 +5,9 @@ describe Review do
   describe "validations" do
 
 # Basic Attribute Validations 
-<<<<<<< HEAD
     it "must have a rating" do
       expect(Review.new(:rating => nil)).to be_invalid
     end
-=======
     it "must have a title" do
       expect(Review.new(:title => nil)).to be_invalid
     end
@@ -39,6 +37,5 @@ describe Review do
   it "should belong to a Product" do
     r = Review.reflect_on_association(:product)
     r.macro == :belongs_to
->>>>>>> master
   end
 end
