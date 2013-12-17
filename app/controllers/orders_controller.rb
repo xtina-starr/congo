@@ -13,19 +13,31 @@ class OrdersController < ApplicationController
 
     def create
       @order = Order.new
-      @user_cart = @users.cart #based on @users described in users controller. Should be singular.
-      if @user_cart.cart_items.empty?
-        redirect_to @users.cart, notice: 'Your cart is empty.' #need to look at again later.
-      else
-        @user_cart.cart_items.each do |cart_item|
-          new_order_item = OrderItem.new
-          new_order_item.quantity = cart_item.quantity
-          new_order_item.product_id = cart_item.product_id
-          # Not sure if we have to associate the order_id (new_order_item.order_id = @order.id)
-          @order.order_items << new_order_item 
-        end
-      end
+      @order.add_items_to_cart(params[:orders][:products])
     end
+
+    def update
+      @order.add_items_to_cart(params[:orders][:products])
+    end
+  end
+
+  order.order_items.each |orderitem|
+  order.product_id
+  order_items.product.name
+  order_items.quantity
+
+  .order_items gets specific info like quantity and discount
+
+  .oi.quantity
+
+  # invoice (order)
+  # line items (order items)
+
+
+  private
+
+  def add_items_to_cart(product_id)
+    order_items << Product.find(product_id)
 
   end
 end
