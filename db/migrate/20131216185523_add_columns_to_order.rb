@@ -4,7 +4,5 @@ class AddColumnsToOrder < ActiveRecord::Migration
     add_column :orders, :shipped, :boolean
     add_column :orders, :cancelled, :boolean
 
-    drop_table :carts
-    drop_table :cart_items
   end
 end
