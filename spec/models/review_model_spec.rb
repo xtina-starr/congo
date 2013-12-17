@@ -5,6 +5,9 @@ describe Review do
   describe "validations" do
 
 # Basic Attribute Validations 
+    it "must have a rating" do
+      expect(Review.new(:rating => nil)).to be_invalid
+    end
     it "must have a title" do
       expect(Review.new(:title => nil)).to be_invalid
     end

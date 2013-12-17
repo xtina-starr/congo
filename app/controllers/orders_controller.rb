@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
       @orders = Order.all
     end
 
+    def cart
+     
+    end
+
     def create
       @order = Order.new
       @order.add_items_to_cart(params[:orders][:products])
@@ -41,5 +45,6 @@ class OrdersController < ApplicationController
 
   end
 end
+
 
 
