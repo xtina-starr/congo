@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
       @orders = Order.all
     end
 
+    def cart
+     
+    end
+
     def create
       @order = Order.new
       @user_cart = @users.cart #based on @users described in users controller. Should be singular.
@@ -26,8 +30,7 @@ class OrdersController < ApplicationController
         end
       end
     end
-
-  end
 end
+
 
 

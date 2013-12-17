@@ -10,4 +10,8 @@ class Order < ActiveRecord::Base
 # order validations
 # must have one or more order items
 
+
+
+scope :pending, -> { where(pending: true) }
+
 end
