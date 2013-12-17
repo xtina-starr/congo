@@ -31,13 +31,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     # Add category upon creation.
-    params[:product][:categories].each do |category_id|
-      next if category_id.to_i == 0
-
-      category = Category.find(category_id.to_i)
-
-      @product.categories << category
-    end 
+    @product.add_categories(params[:product][:categories]) 
 
     if @product.save
       redirect_to @product, notice: 'thing was successfully created.' 
@@ -52,13 +46,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       
       # Ability to change category of product upon update.    
-      params[:product][:categories].each do |category_id|
-        next if recipe_id.to_i == 0
-
-        category = Category.find(category_id.to_i)
-
-        @product.categories << category
-      end
+      @product.update_categories(params[:product][:categories])
 
       redirect_to @product, notice: 'product was successfully updated.'
     else
