@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @order.each do |order_item| %>
+    <% @order.order_items.each do |order_item| %>
       <li><tr>
         <td><%= order_item.product.name %></td>
-        <td><%= order_item.price %></td>
+        <td><%= order_item.product.price %></td>
         <td><%= order_item.quantity %></td>
-        <td><%= link_to 'Show', product_path(product.id) %></td>
-        <td><%= link_to 'Remove from cart', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', order_path(@order) %></td>
+        <td><%= link_to 'Remove from cart', @order, method: :update_cart, data: { confirm: 'Are you sure?' } %></td>
       </tr></li>
     <% end %>
   </tbody>
