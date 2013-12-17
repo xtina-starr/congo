@@ -49,12 +49,14 @@ class Product < ActiveRecord::Base
 
     categories_array.each do |category_id|
       categories << Category.find(category_id.to_i)
-  end
+    end
+  end  
 
   def update_categories(categories_array)
     categories_array.delete_if(&:empty?)
 
     categories_array.each do |category_id|
       categories << Category.find(category_id.to_i)
+    end
   end
 end

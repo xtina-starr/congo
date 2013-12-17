@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
@@ -30,10 +31,11 @@ class ProductsController < ApplicationController
 
     @product = Product.new(product_params)
 
-    # Add category upon creation.
-    @product.add_categories(params[:product][:categories]) 
-
     if @product.save
+
+      # Add category upon creation.
+        @product.add_categories(params[:product][:categories]) 
+
       redirect_to @product, notice: 'thing was successfully created.' 
     else
       render 'new' 

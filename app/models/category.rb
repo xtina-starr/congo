@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :product_to_category_relationships
   has_many :products, through: :product_to_category_relationships
 
-#Validations 
+#Validations
   validates :name,     presence: true
 
 end
