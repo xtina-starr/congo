@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
 
   has_many :reviews
   has_many :orders, through: :order_items
+  has_many :product_to_category_relationships
+  has_many :categories, through: :product_to_category_relationships
 
 # Validations
   validates :name,      presence: true,
@@ -22,6 +24,8 @@ class Product < ActiveRecord::Base
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     else
       find(:all)
+    end
+  end
                         
   def self.search(search)
     if search
