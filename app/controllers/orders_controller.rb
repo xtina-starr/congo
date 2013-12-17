@@ -12,27 +12,32 @@ class OrdersController < ApplicationController
     end
 
     def cart
-     
+     @order = Order.pending
     end
 
-    def create
+# endpoint for "buy me" button on product page
+    def add_to_cart
       @order = Order.new
       @order.add_items_to_cart(params[:orders][:products])
+
+      redirect to @product
     end
 
-    def update
+# update cart amount
+    def update_cart
+      @order = Order.pending
       @order.add_items_to_cart(params[:orders][:products])
     end
-  end
+  
 
-  order.order_items.each |orderitem|
-  order.product_id
-  order_items.product.name
-  order_items.quantity
+  # order.order_items.each |orderitem|
+  # order.product_id
+  # order_items.product.name
+  # order_items.quantity
 
-  .order_items gets specific info like quantity and discount
+  # .order_items gets specific info like quantity and discount
 
-  .oi.quantity
+  # .oi.quantity
 
   # invoice (order)
   # line items (order items)

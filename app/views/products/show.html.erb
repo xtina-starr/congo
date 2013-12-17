@@ -25,7 +25,19 @@
   <%= image_tag @product.image_url.to_s %>
 </p>
 
-
+<p>
+  <%= form_for @order_item, url: add_to_cart_path({product: @product.id}) do |f| %><!-- 
+    <%= f.hidden_field :product_id %> -->
+   <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Add to cart" %>
+  </div>
+  <% end %>
+</p>
 
 <p> 
 	<h2> average rating:</2>

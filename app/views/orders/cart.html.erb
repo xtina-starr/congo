@@ -12,9 +12,9 @@
   </thead>
 
   <tbody>
-    <% Order.pending.each do |order_item| %>
+    <% @order.each do |order_item| %>
       <li><tr>
-        <td><%= order[order_item].name %></td>
+        <td><%= order_item.product.name %></td>
         <td><%= order_item.price %></td>
         <td><%= order_item.quantity %></td>
         <td><%= link_to 'Show', product_path(product.id) %></td>

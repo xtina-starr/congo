@@ -19,6 +19,7 @@ Congo::Application.routes.draw do
 
   resources :orders 
   match '/cart', to: 'orders#cart', via: 'get'
+  match '/add_to_cart', to: 'orders#add_to_cart', via: 'post'
 
 
 
