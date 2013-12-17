@@ -16,11 +16,7 @@ class OrdersController < ApplicationController
      
     end
 
-# endpoint for "buy me" button on product page
     def add_to_cart
-      # @order = Order.new
-
- 
 
       # add_item_to_order(order = @order) EXAMPLE SAMPLE
       @order_item = OrderItem.new
@@ -28,13 +24,14 @@ class OrdersController < ApplicationController
       @order_item.order_id   = @order.id
       @order_item.quantity   = params[:order_item][:quantity] || 1
       @order_item.save
-
       redirect_to product_path(params[:product])
     end
 
 
     def update_cart
-
+      @order_item = OrderItem.where(id: params[:order_item])
+      @order_item.quantity   = params[:order_item][:quantity] || 1
+      @order_item.save
     
     end
 

@@ -14,10 +14,28 @@
   <tbody>
     <% @order.order_items.each do |order_item| %>
       <li><tr>
-        <td><%= order_item.product.name %></td>
+        <td><%= link_to "#{order_item.product.name}", product_path(order_item.product.id) %></td>
         <td><%= order_item.product.price %></td>
         <td><%= order_item.quantity %></td>
-        <td><%= link_to 'Show', order_path(@order) %></td>
+
+
+
+        <td>
+        <%= form_for order_item, url: update_cart_path({order_item: @order_item}) do |f| %>
+
+             <div class="field">
+                <%= f.label :quantity %>
+                <%= f.number_field :quantity %>
+              </div>
+            
+              <div class="actions">
+                <%= f.submit "Update Cart" %>
+              </div>
+            </form>
+            <% end %>
+          </td>
+
+
         <td><%= link_to 'Remove from cart', @order, method: :update_cart, data: { confirm: 'Are you sure?' } %></td>
       </tr></li>
     <% end %>
