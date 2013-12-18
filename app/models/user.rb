@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   validates :password,     presence: true,
                            confirmation: true
+
+  #format { with: /^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/ }
+  #message: 'Password must contain at least one letter, one number, and 8 or more characters'
+
   
   validates :password_confirmation,   presence: true
   validates_length_of :password, :in => 8..20, :on => :create
