@@ -39,27 +39,29 @@ class OrdersController < ApplicationController
     end
 
     def add_billing_info
+
       @order.status = "completed"
-      @order.email = params[:email]
+      @order.email           = params[:email]
       @order.mailing_address = params[:mailing_address]
-      @order.name_on_cc = params[:name_on_cc]
-      @order.cc_number = params[:cc_number]
-      @order.cc_expiration = params[:cc_expiration]
-      @order.cc_cvv = params[:cc_cvv]
-      @order.billing_zip = params[:billing_zip]
+      @order.name_on_cc      = params[:name_on_cc]
+      @order.cc_number       = params[:cc_number]
+      @order.cc_expiration   = params[:cc_expiration]
+      @order.cc_cvv          = params[:cc_cvv]
+      @order.billing_zip     = params[:billing_zip]
       @order.save
 
-      session[:order_id] = nil
-      
+    
+      # session[:order_id] = nil
       redirect_to confirmation_path(@order)
+      # reset_session
     end
 
     
 
   private
-
   def find_cart
-   # begin find_cart
+    # begin find_cart
+
     if session[:order_id]
       @order = Order.find(session[:order_id])
     else
@@ -75,6 +77,7 @@ class OrdersController < ApplicationController
     end
 
     session[:order_id] = @order.id
+
     # end find_cart
   end
 end

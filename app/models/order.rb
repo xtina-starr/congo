@@ -5,7 +5,8 @@ class Order < ActiveRecord::Base
   #validates :order_item, presence: true
   has_many :products, through: :order_items
 
-  validates :email, :mailing_address, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip,   presence: true
+  # validates :email, :mailing_address, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip,   presence: true
+  # TO FIX: this validation causes a new order to crash because it asks for this info before the payment/checkout page.
 
   #Would a separate checkout model be better?
 
