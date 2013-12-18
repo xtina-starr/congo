@@ -4,6 +4,10 @@ module ApplicationHelper
     cookies[:user_id] != nil && User.find(cookies[:user_id].to_i).remember_token == cookies[:remember_token]
   end
 
+  def current_user
+    User.find(cookies[:user_id])
+  end
+
 
   # User signs in, a cookie gets placed for the long term.
   def sign_in(user)
