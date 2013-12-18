@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216230426) do
+ActiveRecord::Schema.define(version: 20131217184210) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -20,18 +20,18 @@ ActiveRecord::Schema.define(version: 20131216230426) do
   end
 
   create_table "order_items", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity"
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "pending"
-    t.boolean  "shipped"
-    t.boolean  "cancelled"
+    t.string   "status"
+    t.integer  "user_id"
   end
 
   create_table "product_to_category_relationships", force: true do |t|
@@ -61,11 +61,6 @@ ActiveRecord::Schema.define(version: 20131216230426) do
     t.integer  "product_id"
   end
 
-  create_table "user_to_products_relationships", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.boolean  "authenticated"
@@ -73,8 +68,8 @@ ActiveRecord::Schema.define(version: 20131216230426) do
     t.boolean  "merchant"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password"
     t.string   "remember_token"
+    t.string   "password"
     t.string   "salt"
   end
 
