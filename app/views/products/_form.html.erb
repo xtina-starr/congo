@@ -41,10 +41,10 @@
 
 <!-- Retire a product from being sold, which hides it from browsing -->
   <div>
-    <%= f.label :Product_still_active? %>
-    <%= f.radio_button(:retired, "false") %>
-    <%= f.label(:retired_true, "Yes") %>
+    <%= f.label :Would_you_like_to_retire_this_product? %>
     <%= f.radio_button(:retired, "true") %>
+    <%= f.label(:retired_true, "Yes") %>
+    <%= f.radio_button(:retired, "false") %>
     <%= f.label(:retired_false, "No") %>
   </div>
 
