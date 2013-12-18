@@ -1,7 +1,7 @@
 <h1>Checkout:</h1>
 
 <td>
-<%= form_for @order, url:add_billing_info_path do |f| %>
+<%= form_for @order, url: add_billing_info_path do |f| %>
 
   <% if @order.errors.any? %>
     <div id="error_explanation">
