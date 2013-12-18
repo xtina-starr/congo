@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+ 
   # GET /products
 
   def index
@@ -13,6 +13,11 @@ class ProductsController < ApplicationController
     @reviews = @product.reviews
     # used for the new review form:
     @review = Review.new
+    @order = Order.new 
+    @order_item = OrderItem.new
+    #figure out how to make @order = current order or create a new order. needs to be order.new OR order.pending 
+    # form_for = requires a model object
+    # form_tag = arbitary forms
   end
 
   # GET /products/new

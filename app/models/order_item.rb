@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  belongs_to :products
+  belongs_to :product
   belongs_to :order
 
 # Validations
@@ -7,9 +7,9 @@ class OrderItem < ActiveRecord::Base
                          numericality: { only_integer: true },
                          numericality: { :greater_than => 0 }
   
-<<<<<<< HEAD
-  validates :quantity, presence: true, numericality: { greater_than: 0 }
-=======
+
+  # validates :quantity, presence: true, numericality: { greater_than: 0 }
+
 
 # validations
 
@@ -20,5 +20,4 @@ class OrderItem < ActiveRecord::Base
 # quantity must be > 0
 
 
->>>>>>> master
 end

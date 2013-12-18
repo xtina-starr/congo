@@ -7,9 +7,11 @@ class Product < ActiveRecord::Base
   belongs_to :users
 
   has_many :reviews
+  has_many :order_items
   has_many :orders, through: :order_items
   has_many :product_to_category_relationships
   has_many :categories, through: :product_to_category_relationships
+
 
 # Validations
   validates :name,      presence: true,
