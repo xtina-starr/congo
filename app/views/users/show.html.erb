@@ -1,24 +1,23 @@
 <h1>Show User</h1>
 
 <p>
-  <table class="table table-striped">
+<table class="table table-striped">
     <thead>
-      <tr>
+    <tr>
         <th><strong>Name:</strong></th>
         <th><strong>Options:</strong></th>
-      </tr>
+    </tr>
     </thead>
 
     <tbody>
-      <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
-          <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><% @current_user = User.find_by(id: cookies[:user_id]) %></td>
+            <td><%= @current_user.name %></td>
+            <td><%= link_to 'Edit', edit_user_path(@current_user) %></td>
+            <td><%= link_to 'Destroy', @current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
-      <% end %>
     </tbody>
-  </table>
+</table>
 </p>
 
 

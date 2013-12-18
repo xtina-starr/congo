@@ -1,0 +1,26 @@
+<h1>Thank you for your purchase!</h1>
+<p>
+  Here's your confirmation page. You order number is <%= "#{@order.id}"%>  Please keep for your records.
+
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <li><tr>
+        <td><%= link_to "#{order_item.product.name}", url: confirmation_path(order_item.product.id) %></td>
+        <td><%= order_item.product.price %></td>
+        <td><%= order_item.quantity %></td>
+</table>
+
+<% end %>
