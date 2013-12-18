@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217184210) do
+ActiveRecord::Schema.define(version: 20131218192445) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -30,8 +30,22 @@ ActiveRecord::Schema.define(version: 20131217184210) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
+    t.string   "status",          default: "pending"
     t.integer  "user_id"
+    t.string   "email"
+    t.string   "mailing_address"
+    t.string   "name_on_cc"
+    t.integer  "cc_number"
+    t.integer  "cc_expiration"
+    t.integer  "cc_cvv"
+    t.integer  "billing_zip"
+  end
+
+  create_table "product_to_category_relationships", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|

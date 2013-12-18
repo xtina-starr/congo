@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :orders
   has_one  :cart 
+  has_many :checkout
 
 # Validations
   validates :name,      presence: true,
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
   # User authentication should take care of password validation automatically. SS
 
   validates :password,     presence: true,
-                            confirmation: true
+                           confirmation: true
   
   validates :password_confirmation,   presence: true
   validates_length_of :password, :in => 8..20, :on => :create

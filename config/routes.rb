@@ -22,6 +22,8 @@ Congo::Application.routes.draw do
   match '/add_to_cart', to: 'orders#add_to_cart', via: 'post'
   match '/update_cart', to: 'orders#update_cart', via: 'patch'
   match '/checkout', to: 'orders#checkout', via: 'get'
+  match '/add_billing_info', to: 'orders#add_billing_info', via: 'patch'
+  match '/confirmation', to: 'orders#confirmation', via: 'get'
 
 
 
