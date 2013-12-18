@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
 
   def index
-    @products = Product.all
+    # @products = Product.all
+    @products = Product.where(retired: false)
   end
 
   # GET /products/1
@@ -23,12 +24,12 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    
+    @categories = Category.all
   end
 
   # POST /products
   def create
-
+    @categories = Category.all
     @product = Product.new(product_params)
 
     if @product.save
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
 
+    @categories = Category.all
     if @product.update(product_params)
       
       # Ability to change category of product upon update.    
@@ -63,12 +65,12 @@ class ProductsController < ApplicationController
   end
 
   private
-
+  # Products/edit page not working, pointing to set_product action.
   def set_product
     @product = Product.find(params[:id])
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image, :stock, :categories => {}) 
+    params.require(:product).permit(:name, :description, :price, :image, :stock, :retired, :categories => {}) 
   end
 end
