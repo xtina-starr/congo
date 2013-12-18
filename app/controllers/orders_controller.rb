@@ -29,10 +29,14 @@ class OrdersController < ApplicationController
 
 
     def update_cart
-      @order_item = OrderItem.where(id: params[:order_item])
+      @order_item = OrderItem.find(params[:order_item][:order_item_id])
       @order_item.quantity   = params[:order_item][:quantity] || 1
       @order_item.save
-    
+      render :cart
+    end
+
+    def checkout
+      
     end
 
   private
