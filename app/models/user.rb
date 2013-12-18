@@ -29,14 +29,14 @@ class User < ActiveRecord::Base
 
   
   validates :password_confirmation,   presence: true
-  validates_length_of :password, :in => 8..20, :on => :create
+  #validates_length_of :password, :in => 8..20, :on => :create
 
   # Create a new token for user
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
-  # Encrypt the user's token using SHA1 algo - faster than Bcrypt & will run on every page.
+  #Encrypt the user's token using SHA1
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   # Authenticate my password
   def self.authenticate(email, password)
     user = User.find_by_email(email)
+    #raise "#{user.password}, #{BCrypt::Engine.hash_secret(password, user.salt)}"
     if user && user.password == BCrypt::Engine.hash_secret(password, user.salt)
       user
     else
