@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
       if @current_user && User.authenticate(params[:email], params[:password])
         sign_in(@current_user)
         # redirect to the browse view.
-        redirect_to users_path
+        redirect_to root_path
       else
-        flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+        flash[:notice] = 'Invalid email/password combination' # Not quite right!
         render 'new'
       end
   end
@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
   def destroy
     @current_user = nil
     cookies.delete(:remember_token)
+    cookies.delete(:user_id)
     redirect_to '/users'
   end
 end
