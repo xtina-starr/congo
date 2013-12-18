@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
         # redirect to the browse view.
         redirect_to root_path
       else
+        #raise "Password not authenticated"
         flash[:notice] = 'Invalid email/password combination' # Not quite right!
         render 'new'
       end
