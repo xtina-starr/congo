@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
@@ -32,10 +33,14 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
- 
-  @product = Product.new(product_params)
+
+    @product = Product.new(product_params)
 
     if @product.save
+
+      # Add category upon creation.
+        @product.add_categories(params[:product][:categories]) 
+
       redirect_to @product, notice: 'thing was successfully created.' 
     else
       render 'new' 
@@ -44,8 +49,12 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   def update
-    
+
     if @product.update(product_params)
+      
+      # Ability to change category of product upon update.    
+      @product.update_categories(params[:product][:categories])
+
       redirect_to @product, notice: 'product was successfully updated.'
     else
       render action: 'edit'

@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20131217184210) do
     t.integer  "user_id"
   end
 
+  create_table "product_to_category_relationships", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.text     "name"
     t.text     "description"
