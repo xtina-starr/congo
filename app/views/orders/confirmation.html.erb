@@ -22,9 +22,9 @@
             <td><%= link_to "#{order_item.product.name}", product_path(Product.find(order_item.product.id)) %></td>
             <td><%= order_item.product.price %></td>
             <td><%= order_item.quantity %></td>
-           
-            <td><% for order_item in @order.order_items %> <%= order_item.price %><br/><% end %>
-<%= @order.total %></td>
+           <!-- 
+            <td><% for order_item in @order.order_items %> <%= order_item.subtotal %><br/><% end %>
+<%= @order.total %></td> #Subtotal is broken. -->
             <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
             <td>puts "order status here"</td>
           </tr>   
