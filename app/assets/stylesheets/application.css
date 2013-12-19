@@ -61,7 +61,7 @@ form    {
     background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
     margin:auto;
     position:relative;
-    width:40%;
+    width: 45%;
     height:40%;
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 14px;
@@ -305,4 +305,26 @@ div.wrapper {
 }
 #cssmenu ul ul a {
     font-size: 12px;
+}
+
+.prod-box {
+    width: 200px;
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+}
+
+.content-body {
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+    width: 870px;
+    background-color: #dadad4,
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
 }
