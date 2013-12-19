@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
 
+
+  SALT = '$2a$10$D1OPM3Botcp0vU1sfbvlq.'
+
 # attr_accessible :name, :email, :password, :password_confirmation
 
   before_save { self.email = self.email.downcase }
-  before_save :encrypt_password
   before_create :create_remember_token
+  before_create :encrypt_password
   after_save :clear_password
 
   has_many :products
@@ -44,8 +47,7 @@ class User < ActiveRecord::Base
   # Authenticate my password
   def self.authenticate(email, password)
     user = User.find_by_email(email)
-    #raise "#{user.password}, #{BCrypt::Engine.hash_secret(password, user.salt)}"
-    if user && user.password == BCrypt::Engine.hash_secret(password, user.salt)
+    if user && user.password == BCrypt::Engine.hash_secret(password, SALT)
       user
     else
       nil
@@ -60,10 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def encrypt_password
-    if password.present?
-      self.salt = BCrypt::Engine.generate_salt
-      self.password = BCrypt::Engine.hash_secret(password, salt)
-    end
+    self.password = BCrypt::Engine.hash_secret(password, SALT)
   end
 
   def clear_password
