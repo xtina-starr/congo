@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div class="prod-details">
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -20,39 +21,38 @@
   <%= @product.stock %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image_url.to_s %>
-</p>
-
-<p>
-  <% unless @product.stock.to_i < 1 %>
-    <%= form_for @order_item, url: add_to_cart_path({product: @product.id}) do |f| %>
-      <div class="field">
-       <%= f.label :quantity %><br>
-       <%= f.number_field :quantity %>
-      </div>
-    
-      <div class="actions">
-       <%= f.submit "Add to cart" %>
-      </div>
+<p> 
+  <strong>Average rating:</strong>
+  <% if @reviews.nil? %>
+    <%= "not yet reviewed" %>
+  <% else %>
+    <% @reviews.average(:rating).to_i.times do %>
+      <%= image_tag "star.png" %>
     <% end %>
   <% end %>
 </p>
-
-<p> 
-	<h2> average rating:</2>
-	<% if @reviews.nil? %>
-		<%= "not yet reviewed" %>
-	<% else %>
-		<% @reviews.average(:rating).to_i.times do %>
-			<%= image_tag "star.png" %>
-		<% end %>
-	<% end %>
-</p>
-
+<hr>
 <%= render "/reviews/show" %>
-<br>
+</div>
+
+<div class="prod-details">
+  <%= image_tag @product.image_url.to_s %>
+  <p>
+    <% unless @product.stock.to_i < 1 %>
+      <%= form_for @order_item, url: add_to_cart_path({product: @product.id}) do |f| %>
+        <div class="field">
+         <%= f.label :quantity %><br>
+         <%= f.number_field :quantity %>
+        </div>
+      
+        <div class="actions">
+         <%= f.submit "Add to cart" %>
+        </div>
+      <% end %>
+    <% end %>
+  </p>
+</div>
+<hr>
 
 <!-- use css to make form hidden, then when user clicks button to review show form -->
 <%= render "/reviews/form" %>
