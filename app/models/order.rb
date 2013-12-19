@@ -12,4 +12,17 @@ class Order < ActiveRecord::Base
 
   # scope :pending, -> { where(pending: true) }
 
+  # def total_price
+  #   total_price = order_items.inject(0) { |sum, p| sum + p.subtotal }
+  # end
+
+  def subtotals
+    order_items.map do |i| 
+      i.subtotal 
+    end
+  end
+
+  def total
+    subtotals.sum
+  end
 end

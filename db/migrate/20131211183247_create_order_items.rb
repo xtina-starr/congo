@@ -4,6 +4,8 @@ class CreateOrderItems < ActiveRecord::Migration
       t.integer :quantity
       t.integer :product_id
       t.integer :order_id
+      t.integer :price
+      t.integer :subtotal
 
       t.timestamps
     end

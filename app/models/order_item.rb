@@ -20,4 +20,8 @@ class OrderItem < ActiveRecord::Base
 # quantity must be > 0
 
 
+  def subtotal
+    quantity * price
+  end
+
 end
