@@ -52,6 +52,7 @@ class ProductsController < ApplicationController
   def update
 
     @categories = Category.all
+
     if @product.update(product_params)
       
       # Ability to change category of product upon update.    
