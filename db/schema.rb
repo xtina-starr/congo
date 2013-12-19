@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(version: 20131218192445) do
   end
 
   create_table "order_items", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity"
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status",          default: "pending"
@@ -68,11 +69,6 @@ ActiveRecord::Schema.define(version: 20131218192445) do
     t.integer  "product_id"
   end
 
-  create_table "user_to_products_relationships", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.boolean  "authenticated"
@@ -80,8 +76,8 @@ ActiveRecord::Schema.define(version: 20131218192445) do
     t.boolean  "merchant"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password"
     t.string   "remember_token"
+    t.string   "password"
     t.string   "salt"
   end
 

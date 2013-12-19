@@ -1,26 +1,34 @@
 <h1>Thank you for your purchase!</h1>
-<p>
-  Here's your confirmation page. You order number is <%= "#{@order.id}"%>  Please keep for your records.
+<br>
+  <p>
+    Your order number is <%= "#{@order.id}"%>.  Please keep this confirmation page for your records.
+  </p>
 
-</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Date/Time</th>
+        <th>Order Status</th>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Item</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @old_order.order_items.each do |order_item| %>
+          <tr>
+            <td><%= link_to "#{order_item.product.name}", product_path(Product.find(order_item.product.id)) %></td>
+            <td><%= order_item.product.price %></td>
+            <td><%= order_item.quantity %></td>
+           
+            <td><% for order_item in @order.order_items %> <%= order_item.price %><br/><% end %>
+<%= @order.total %></td>
+            <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+            <td>puts "order status here"</td>
+          </tr>   
+  </table>
 
-  <tbody>
-    <% @order.order_items.each do |order_item| %>
-      <li><tr>
-        <td><%= link_to "#{order_item.product.name}", url: confirmation_path(order_item.product.id) %></td>
-        <td><%= order_item.product.price %></td>
-        <td><%= order_item.quantity %></td>
-</table>
+  <% end %>
 
-<% end %>
