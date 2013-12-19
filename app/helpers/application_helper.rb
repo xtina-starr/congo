@@ -1,6 +1,8 @@
 module ApplicationHelper
 
   def signed_in?
+    if cookies[:user_id] != nil
+    end
     cookies[:user_id] != nil && User.find(cookies[:user_id].to_i).remember_token == cookies[:remember_token]
   end
 
