@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :email,     presence: true,
                         uniqueness: true
 
-  # User authentication should take care of password validation automatically. SS
+  # User authentication should take care of password validation automatically.
 
   validates :password,     presence: true,
                            confirmation: true

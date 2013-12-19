@@ -23,12 +23,12 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    
+    @categories = Category.all
   end
 
   # POST /products
   def create
-
+    @categories = Category.all
     @product = Product.new(product_params)
 
     if @product.save
@@ -44,6 +44,8 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   def update
+
+    @categories = Category.all
 
     if @product.update(product_params)
       

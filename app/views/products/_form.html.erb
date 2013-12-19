@@ -34,7 +34,7 @@
   </div>
 
 <!--   add category selection here -->
-  <%= f.select(:categories, @categories, {}, {:multiple => true}) %>
+  <%= f.select(:categories, @categories.collect{|category| [category.name, category.id]}, {}, {:multiple => true}) %>
 
   <div class="actions">
     <%= f.submit %>
