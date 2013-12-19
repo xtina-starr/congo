@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+ 
   # GET /products
 
   def index
-    @products = Product.all
+    # @products = Product.all
+    @products = Product.where(retired: false)
   end
 
   # GET /products/1
@@ -13,6 +14,11 @@ class ProductsController < ApplicationController
     @reviews = @product.reviews
     # used for the new review form:
     @review = Review.new
+    @order = Order.new 
+    @order_item = OrderItem.new
+    #figure out how to make @order = current order or create a new order. needs to be order.new OR order.pending 
+    # form_for = requires a model object
+    # form_tag = arbitary forms
   end
 
   # GET /products/new
@@ -65,12 +71,12 @@ class ProductsController < ApplicationController
   end
 
   private
-
+  # Products/edit page not working, pointing to set_product action.
   def set_product
     @product = Product.find(params[:id])
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image, :stock, :categories => {}) 
+    params.require(:product).permit(:name, :description, :price, :image, :stock, :retired, :categories => {}) 
   end
 end

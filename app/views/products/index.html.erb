@@ -1,11 +1,11 @@
 <h1>All Products</h1>
-
-<%= form_tag products_path, :method => 'get' do %>
-<p>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :name => nil %>
-</p>
+    <%= form_tag products_path, :method => 'get' do %>
+        <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+        </p>
 <% end %>
+</div>
 
 <table>
   <thead>
@@ -13,6 +13,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Price</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -25,6 +26,7 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
+        <td><%= image_tag product.image_url(:thumb).to_s %>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

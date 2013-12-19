@@ -34,7 +34,23 @@
   </div>
 
 <!--   add category selection here -->
+
   <%= f.select(:categories, @categories.collect{|category| [category.name, category.id]}, {}, {:multiple => true}) %>
+<!-- =======
+  <div class="field">
+    <%= f.label :categories %><br>
+    <%= f.select(:categories, @categories, {}, {:multiple => true}) %>
+  </div> -->
+
+<!-- Retire a product from being sold, which hides it from browsing -->
+  <div>
+    <%= f.label :Would_you_like_to_retire_this_product? %>
+    <%= f.radio_button(:retired, "true") %>
+    <%= f.label(:retired_true, "Yes") %>
+    <%= f.radio_button(:retired, "false") %>
+    <%= f.label(:retired_false, "No") %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
