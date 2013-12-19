@@ -45,7 +45,6 @@ h3 {
 #sale {
     display: inline-block;
     font-size: 30px;
-    border: 2px dotted green;
     color: #c5121c;
 }
 
@@ -309,22 +308,39 @@ div.wrapper {
 
 .prod-box {
     width: 200px;
+    height: 275px;
+    vertical-align: top;
     display: inline-block;
     border: 1px solid #999;
     border-radius: 10px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     padding: 5px;
+    margin: 3px;
+
+}
+
+.prod-box .image {
+    height: 200px;
 }
 
 .content-body {
     position: relative;
     margin: auto;
     margin-top: 30px;
-    width: 870px;
+    width: 890px;
     background-color: #dadad4,
     display: inline-block;
     border: 1px solid #999;
     border-radius: 10px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     padding: 20px;
+}
+
+.prod-details {
+    display: inline-block;
+    width: 440px;
+    border: 1px dashed black;
+    vertical-align: top;
+    height: 450px;
+
 }
