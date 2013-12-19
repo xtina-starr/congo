@@ -13,12 +13,19 @@ class OrdersController < ApplicationController
     end
 
     def cart
+      @order_item = @order.order_items
+ 
     end
 
     def checkout
     end
 
     def confirmation
+      @old_order = @order
+      @order = Order.new
+      @order.user_id = @current_user.id if @current_user
+      @order.save 
+      session[:order_id] = @order.id
     end
 
     def add_to_cart
@@ -36,10 +43,10 @@ class OrdersController < ApplicationController
       @order_item.quantity   = params[:order_item][:quantity] || 1
       @order_item.save
       render :cart
+      #new, create; cart=edit/ update=update - fix update?
     end
 
     def add_billing_info
-
       @order.status = "completed"
       @order.email           = params[:email]
       @order.mailing_address = params[:mailing_address]
@@ -49,13 +56,10 @@ class OrdersController < ApplicationController
       @order.cc_cvv          = params[:cc_cvv]
       @order.billing_zip     = params[:billing_zip]
       @order.save
-
-    
+      
       # session[:order_id] = nil
-      redirect_to confirmation_path(@order)
-      # reset_session
+      redirect_to action: 'confirmation' 
     end
-
     
 
   private

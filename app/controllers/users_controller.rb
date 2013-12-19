@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @users = User.new(user_params)
-
     respond_to do |format|
       if @users.save
         sign_in(@users)

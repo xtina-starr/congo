@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20131219234421) do
     t.integer  "product_id"
   end
 
+
   create_table "user_to_prods", force: true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
