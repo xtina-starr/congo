@@ -44,6 +44,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 gem 'carrierwave'
 gem 'mini_magick'
 # Use ActiveModel has_secure_password
