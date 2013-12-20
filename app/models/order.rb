@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
   #http://edgeguides.rubyonrails.org/active_record_validations.html#using-a-symbol-with-if-and-unless
 
   def iscompleted?
-    :status == "completed"
+    status == "completed"
   end
 
   # TO FIX: this validation causes a new order to crash because it asks for this info before the payment/checkout page.
@@ -17,10 +17,6 @@ class Order < ActiveRecord::Base
   #Would a separate checkout model be better?
 
   # scope :pending, -> { where(pending: true) }
-
-  # def total_price
-  #   total_price = order_items.inject(0) { |sum, p| sum + p.subtotal }
-  # end
 
   def subtotals
     order_items.reduce

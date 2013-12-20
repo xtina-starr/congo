@@ -59,6 +59,12 @@ class OrdersController < ApplicationController
           # session[:order_id] = nil
           redirect_to action: 'confirmation'
     end
+
+    def destroy
+      @order_item = OrderItem.find(params[:order_item.id]
+      @order_item.destroy
+        redirect_to cart_url 
+    end
     
 
   private
