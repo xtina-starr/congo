@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
   before_action :current_user, :only => [:show, :edit, :update, :destroy]
-  #before_filter :create_remember_token, :only => :create_remember_token
   
   def index
     @users = User.all

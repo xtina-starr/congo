@@ -26,6 +26,12 @@ h3 {
     text-align: center;
 }
 
+p#page-header {
+    font-size: 30px;
+    color: #c04e18;
+
+}
+
 #top {
     background-color: #e1e1dc;
     width: 100%;

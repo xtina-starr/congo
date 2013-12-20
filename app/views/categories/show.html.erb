@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<p id="page-header"><strong>
   <%= @category.name %>
+    </strong>
 </p>
+<ul>
+<% @category.products.each do |product| %>
+    <li>
+    <%= product.name %>
+    </li>
+    <% end %>
+    </ul>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+<p>Didn't find what you're looking for? Check out <a href="/products">all the products!</a></p>
 <%= link_to 'Back', categories_path %>
