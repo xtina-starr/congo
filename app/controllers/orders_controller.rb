@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
       @order_item.quantity   = params[:order_item][:quantity] || 1
       @order_item.save
       render :cart
-      #new, create; cart=edit/ update=update - fix update?
     end
 
     def add_billing_info
@@ -59,8 +58,7 @@ class OrdersController < ApplicationController
       # session[:order_id] = nil
       redirect_to action: 'confirmation' 
     end
-    
-
+ 
   private
   def find_cart
     # begin find_cart
