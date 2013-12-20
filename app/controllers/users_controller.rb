@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :set_user, :only => [:show, :edit, :update, :destroy]
+  before_action :current_user, :only => [:show, :edit, :update, :destroy]
   #before_filter :create_remember_token, :only => :create_remember_token
   
   def index
@@ -46,10 +46,6 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @users = User.find(params[:id])
-    end
-
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
