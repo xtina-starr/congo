@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/besty_production.pg
+  database: db/betsy_production.pg
   pool: 5
   username:
   password:
