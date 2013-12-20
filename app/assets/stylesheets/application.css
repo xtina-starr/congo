@@ -80,7 +80,6 @@ form    {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 input    {
-    width:375px;
     display:block;
     border: 1px solid #999;
     height: 25px;
@@ -342,5 +341,14 @@ div.wrapper {
     border: 1px dashed black;
     vertical-align: top;
     height: 450px;
+}
 
+.prod-details form{
+    width: 100px;
+    height: 75px;
+    text-align: center;
+}
+
+.prod-details form input#order_item_quantity {
+    width: 75px;
 }

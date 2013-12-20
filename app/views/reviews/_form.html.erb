@@ -1,7 +1,8 @@
+
 <%= form_for([@product, @review]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being     saved:</h2>
 
       <ul>
       <% @review.errors.full_messages.each do |msg| %>
@@ -10,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+<strong> Review this product:</strong>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -27,4 +28,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %> 
