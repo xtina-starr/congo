@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
+# This is how I think order_fulfillment would be set up, but keep getting current user errors.
   # def total_revenue(stat)
   #   total = 0
   #   Order.where(status: stat).each(|order|     # find all completed orders and for each

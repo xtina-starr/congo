@@ -8,6 +8,8 @@ class Order < ActiveRecord::Base
   validates :email, :mailing_address, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip,   presence: true, if: :iscompleted?
   #http://edgeguides.rubyonrails.org/active_record_validations.html#using-a-symbol-with-if-and-unless
 
+  #Validation still broken -> Kerri is researching.
+
   def iscompleted?
     status == "completed"
   end

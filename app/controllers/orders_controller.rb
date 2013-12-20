@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
       @order_item.quantity   = params[:order_item][:quantity] || 1
       @order_item.save
       render :cart
-      #new, create; cart=edit/ update=update - fix update?
     end
 
     def add_billing_info

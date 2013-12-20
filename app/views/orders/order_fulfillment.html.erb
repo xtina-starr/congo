@@ -15,13 +15,21 @@
     </thead>
 
     <tbody>
-          <tr>
-            <td><%= @current_user.total_revenue("completed") %></td>
-            <td>Completed: <%= %></td>
-            <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+      <tr>
+        <td>
+          <%= @current_user.total_revenue("completed") %>
+        </td>
+        <td>
+          Completed: <%= %>
+        </td>
+        <td>
+          <%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %>
+        </td>
+      </tr>
+    </tbody>
   </table>
 
- 
+ # This page does not work.  Need to fix @current_user.
 
    * [ ]Total Revenue
    * [ ]Total Revenue by status
