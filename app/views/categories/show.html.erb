@@ -1,15 +1,52 @@
-
 <p id="page-header"><strong>
-  <%= @category.name %>
-    </strong>
+    <%= @category.name %>
+</strong>
 </p>
 <ul>
-<% @category.products.each do |product| %>
-    <li>
-    <%= product.name %>
-    </li>
+    <% @category.products.each do |product| %>
+        <div class="prod-details">
+            <p>
+                <strong>Name:</strong>
+                <%= product.name %>
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                <%= product.description %>
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                <%= product.price %>
+            </p>
+
+            <p>
+                <strong>Stock:</strong>
+                <%= product.stock %>
+            </p>
+
+            <p>
+                <strong>Average rating:</strong>
+                <% if @reviews.nil? %>
+                    <%= "not yet reviewed" %>
+                <% else %>
+                    <% @reviews.average(:rating).to_i.times do %>
+                        <%= image_tag "star.png" %>
+                    <% end %>
+                <% end %>
+            </p>
+            <hr>
+            <p><strong>This product's reviews:</strong><br>
+                <%= render "/reviews/show" %>
+        </div>
+
+        <div class="prod-details">
+            <%= image_tag product.image_url.to_s %>
+            <p>
+    </p>
+    </div>
     <% end %>
-    </ul>
+</ul>
 
 <p>Didn't find what you're looking for? Check out <a href="/products">all the products!</a></p>
 <%= link_to 'Back', categories_path %>
