@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/sloth_express_production.pg
+  database: db/besty_production.pg
   pool: 5
   username:
   password:
