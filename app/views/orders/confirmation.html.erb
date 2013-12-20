@@ -12,7 +12,7 @@
         <th>Quantity</th>
         <th>Subtotal</th>
         <th>Date/Time</th>
-        <th>Order Status</th>
+        
       </tr>
     </thead>
 
@@ -26,10 +26,10 @@
           <td><%= order_item.quantity %></td>
           <td><%= order_item.subtotal %></td>
           <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
-          <td>puts "order status here"</td>
+          
         </tr>   
       <% end %>
   </table>
   <p>
-    Your total is $<%= total %>.  You will not be charged until your order has shipped.
+    Your total is $<%= total %>.  Your order status is <%=@order.status%>.  You will not be charged until your order has shipped.  
   </p>

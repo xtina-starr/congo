@@ -46,18 +46,18 @@ class OrdersController < ApplicationController
     end
 
     def add_billing_info
-      @order.status = "completed"
-      @order.email           = params[:email]
-      @order.mailing_address = params[:mailing_address]
-      @order.name_on_cc      = params[:name_on_cc]
-      @order.cc_number       = params[:cc_number]
-      @order.cc_expiration   = params[:cc_expiration]
-      @order.cc_cvv          = params[:cc_cvv]
-      @order.billing_zip     = params[:billing_zip]
-      @order.save
+          @order.status = "completed"
+          @order.email           = params[:email]
+          @order.mailing_address = params[:mailing_address]
+          @order.name_on_cc      = params[:name_on_cc]
+          @order.cc_number       = params[:cc_number]
+          @order.cc_expiration   = params[:cc_expiration]
+          @order.cc_cvv          = params[:cc_cvv]
+          @order.billing_zip     = params[:billing_zip]
+          @order.save
       
-      # session[:order_id] = nil
-      redirect_to action: 'confirmation' 
+          # session[:order_id] = nil
+          redirect_to action: 'confirmation'
     end
     
 

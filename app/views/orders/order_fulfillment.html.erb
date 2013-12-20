@@ -15,22 +15,21 @@
     </thead>
 
     <tbody>
-      <% @old_order.order_items.each do |order_item| %>
           <tr>
-            <td><%= link_to "#{order_item.product.name}", product_path(Product.find(order_item.product.id)) %></td>
-            <td><%= order_item.product.price %></td>
+            <td><%= @current_user.total_revenue("completed") %></td>
+            <td>Completed: <%= %></td>
             <td><%= order_item.quantity %></td>
            <td><% for order_item in @order.order_items %> 
                 <%= order_item.subtotal %>
                 <br>
                 <% end %>
                 <%= @order.total %></td>
-            <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+            
             <td>puts "order status here"</td>
           </tr>   
   </table>
-
-  <% end %>
+<td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+ 
 
    * [ ]Total Revenue
    * [ ]Total Revenue by status

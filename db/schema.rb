@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20131219234421) do
     t.integer  "quantity"
     t.integer  "product_id"
     t.integer  "order_id"
+    t.integer  "price"
+    t.integer  "subtotal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,7 +70,6 @@ ActiveRecord::Schema.define(version: 20131219234421) do
     t.datetime "updated_at"
     t.integer  "product_id"
   end
-
 
   create_table "user_to_prods", force: true do |t|
     t.integer  "user_id"
