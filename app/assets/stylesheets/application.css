@@ -79,6 +79,10 @@ form    {
     -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
+
+input#product_stock {
+    max-width: 50px;
+}
 input    {
     width:375px;
     display:block;
