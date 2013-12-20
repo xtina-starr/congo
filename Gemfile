@@ -36,7 +36,7 @@ group :test, :development do
 end
 
 group :development do
-	gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
 end
 
 group :doc do

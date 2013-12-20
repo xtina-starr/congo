@@ -3,9 +3,9 @@
 <head>
 
   <title>Congo</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
 </head>
 
 <div id="top">
@@ -30,7 +30,7 @@
              <li class='has-sub'><a href='/users/'><span>By Seller</span></a>
                 <ul>
                   <li><a href='/users/<%= user.id %>'><span><%= user.name %></span></a></li><% end %>
-                 </ul>
+                </ul>
              </li>
          </ul>
      </li>
@@ -52,7 +52,7 @@
 </div>
 <body>
   <div class="content-body">
-      <%= yield %>
+    <%= yield %>
   </div>
 </body>
 

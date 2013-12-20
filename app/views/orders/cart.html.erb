@@ -13,6 +13,7 @@
 
   <tbody>
     <% @order.order_items.each do |order_item| %>
+
       <li>
         <tr>
           <td><%= link_to "#{order_item.product.name}", product_path(order_item.product.id) %>
