@@ -26,9 +26,7 @@ class ReviewsController < ApplicationController
     redirect_to reviews_url 
 	end
 
-
-
-  private
+private
 
   def set_review
     @review = Review.find(params[:id])
