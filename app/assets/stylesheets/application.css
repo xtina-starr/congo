@@ -338,7 +338,6 @@ div.wrapper {
 .prod-details {
     display: inline-block;
     width: 440px;
-    border: 1px dashed black;
     vertical-align: top;
     height: 450px;
 }

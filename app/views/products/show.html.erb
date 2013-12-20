@@ -1,5 +1,5 @@
 <div><%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back to all Products', products_path %>
 </div>
 <p id="notice"><%= notice %></p>
 
@@ -34,7 +34,7 @@
     <% end %>
   <% end %>
 </p><hr>
-<p><strong>This product's reviews:</strong>
+<p><strong>This product's reviews:</strong><br>
 <%= render "/reviews/show" %>
 </div>
 
@@ -56,12 +56,5 @@
   </p>
 </div>
 <hr>
+<%= render "/reviews/form" %>
 
-<!-- this is brokennnnn -->
-<!--  unless signed_in? == false 
-   if @product.user.id == current_user.id 
-     "You can't review your own product. Check out some other similar products in the #{@product.categories} category." 
-   else --> 
-    <%= render "/reviews/form" %>
-<!--    end 
- end  -->
