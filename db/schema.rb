@@ -84,11 +84,18 @@ ActiveRecord::Schema.define(version: 20131219234423) do
     t.integer  "product_id"
   end
 
-  create_table "user_to_prods", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.boolean  "authenticated"
+    t.string   "email"
+    t.boolean  "merchant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
+    t.string   "password"
+    t.string   "salt"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
