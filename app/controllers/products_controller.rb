@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
     if @product.save
 
       # Add category upon creation.
-        @product.add_categories(params[:product][:categories]) 
+      @product.add_categories(params[:product][:categories]) 
 
       redirect_to @product, notice: 'thing was successfully created.' 
     else
