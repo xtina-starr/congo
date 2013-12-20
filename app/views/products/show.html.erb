@@ -56,8 +56,12 @@
   </p>
 </div>
 <hr>
-<% if signed_in? && @product.user.id == current_user.id %>
-    <%= "You can't review your own product. Check out some other similar products in the #{@product.categories} category." %>
-  <% else %>
+
+<!-- this is brokennnnn -->
+<!--  unless signed_in? == false 
+   if @product.user.id == current_user.id 
+     "You can't review your own product. Check out some other similar products in the #{@product.categories} category." 
+   else --> 
     <%= render "/reviews/form" %>
-<% end %>
+<!--    end 
+ end  -->
