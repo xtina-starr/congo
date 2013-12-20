@@ -1,0 +1,45 @@
+<h1>Order Fulfillment:</h1>
+<br>
+  <p>
+    Your User ID is <%= "#{@user.id}"%>.  
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Total Revenue</th>
+        <th>Total Revenue by Status</th>
+        <th>Total number of orders by status</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @old_order.order_items.each do |order_item| %>
+          <tr>
+            <td><%= link_to "#{order_item.product.name}", product_path(Product.find(order_item.product.id)) %></td>
+            <td><%= order_item.product.price %></td>
+            <td><%= order_item.quantity %></td>
+           <td><% for order_item in @order.order_items %> 
+                <%= order_item.subtotal %>
+                <br>
+                <% end %>
+                <%= @order.total %></td>
+            <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+            <td>puts "order status here"</td>
+          </tr>   
+  </table>
+
+  <% end %>
+
+   * [ ]Total Revenue
+   * [ ]Total Revenue by status
+   * [ ]Total number of orders by status
+   * [ ]Filter orders displayed by status
+   * [ ]Link to each individual order
+   * [ ]A list of orders including at least one of my products:
+      * [ ]Each order item sold by me with a quantity and line-item subtotal
+      * [ ]A link to the item description page
+      * [ ]DateTime the order was placed
+      * [ ]Link to transition the order item to marked as shipped
+      * [ ]The current status of the order ("pending", "paid", "complete", "cancelled")

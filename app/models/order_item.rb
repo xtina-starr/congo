@@ -21,7 +21,7 @@ class OrderItem < ActiveRecord::Base
 
 
   def subtotal
-    quantity * price
+    quantity * product.price
   end
 
 end

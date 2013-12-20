@@ -17,12 +17,12 @@ class Order < ActiveRecord::Base
   # end
 
   def subtotals
-    order_items.map do |i| 
-      i.subtotal 
-    end
+    order_items.reduce
   end
 
   def total
-    subtotals.sum
+    t = 0
+    order_items.each{|oi|t+=oi.subtotal}
+    return t
   end
 end
