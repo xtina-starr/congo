@@ -337,7 +337,7 @@ div.wrapper {
     margin: auto;
     margin-top: 30px;
     width: 890px;
-    background-color: #dadad4,
+    background-color: #dadad4;
     display: inline-block;
     border: 1px solid #999;
     border-radius: 10px;
