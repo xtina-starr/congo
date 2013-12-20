@@ -60,13 +60,6 @@ class OrdersController < ApplicationController
           redirect_to action: 'confirmation'
     end
 
-    def destroy
-      @order_item = OrderItem.find(params[:order_item.id]
-      @order_item.destroy
-        redirect_to cart_url 
-    end
-    
-
   private
   def find_cart
     # begin find_cart

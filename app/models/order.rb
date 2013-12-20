@@ -13,8 +13,8 @@ class Order < ActiveRecord::Base
   end
 
   # TO FIX: this validation causes a new order to crash because it asks for this info before the payment/checkout page.
-
-  #Would a separate checkout model be better?
+  
+  # Would a separate checkout model be better?
 
   # scope :pending, -> { where(pending: true) }
 

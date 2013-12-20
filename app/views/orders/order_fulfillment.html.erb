@@ -1,7 +1,7 @@
 <h1>Order Fulfillment:</h1>
 <br>
   <p>
-    Your User ID is <%= "#{@user.id}"%>.  
+    Your User ID is <%= "#{@current_user.id}"%>.
   </p>
 
   <table>
@@ -18,17 +18,9 @@
           <tr>
             <td><%= @current_user.total_revenue("completed") %></td>
             <td>Completed: <%= %></td>
-            <td><%= order_item.quantity %></td>
-           <td><% for order_item in @order.order_items %> 
-                <%= order_item.subtotal %>
-                <br>
-                <% end %>
-                <%= @order.total %></td>
-            
-            <td>puts "order status here"</td>
-          </tr>   
+            <td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
   </table>
-<td><%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %></td>
+
  
 
    * [ ]Total Revenue
