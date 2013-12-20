@@ -19,17 +19,17 @@
       <li class='active'><a href='/products/new'><span>Sell</span></a></li>
       <li class='has-sub'><a href='#'><span>Shop</span></a>
          <ul>
-            <li class='has-sub'><a href='#'><span>By Category</span></a>
+            <li class='has-sub'><a href='/categories'><span>By Category</span></a>
               <ul>
-                <% Category.pluck(:name).each do |category| %>
-                <li><a href='#'><span><%= category %></span></a></li>
+                <% Category.all.each do |category| %>
+                <li><a href="/categories/<%= category.id %>"><span><%= category.name %></span></a></li>
                   <% end %>
               </ul>
              </li>
-             <li class='has-sub'><a href='#'><span>By Seller</span></a>
+             <% User.all.each do |user| %>
+             <li class='has-sub'><a href='/users/'><span>By Seller</span></a>
                 <ul>
-                  <li><a href='#'><span>Seller 1</span></a></li>
-                  <li class='last'><a href='#'><span>Seller 2</span></a></li>
+                  <li><a href='/users/<%= user.id %>'><span><%= user.name %></span></a></li><% end %>
                  </ul>
              </li>
          </ul>
