@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   # validates :price, format: { with: /^(\d*\.\d{1,2}|\d+)$/,
   #   message: "must be in $dd.cc format, ex. $15.45" }
 
-  belongs_to :users
+  belongs_to :user
 
   has_many :reviews
   has_many :order_items
