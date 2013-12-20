@@ -26,10 +26,11 @@
                   <% end %>
               </ul>
              </li>
-             <% User.all.each do |user| %>
              <li class='has-sub'><a href='/users/'><span>By Seller</span></a>
                 <ul>
-                  <li><a href='/users/<%= user.id %>'><span><%= user.name %></span></a></li><% end %>
+                  <% User.all.each do |user| %>
+                    <li><a href='/users/<%= user.id %>'><span><%= user.name %></span></a></li>
+                  <% end %>
                 </ul>
              </li>
          </ul>
