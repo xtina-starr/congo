@@ -1,6 +1,4 @@
 This is the amazon/etsy ripoff app made by Melinda, Sue, Simone, and Liz for Ada.
 
 Our live version is hosted on heroku at:
-
-
-
+http://frozen-forest-3141.herokuapp.com
