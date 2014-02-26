@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 
-  before_action :set_user, only: [:show] 
+  before_action :set_user, only: [:show]
   before_action :find_cart
     #:update, :destroy add later so that the user can cancel or update order before it ships
-    
+
     def index
       @orders = Order.all
     end
@@ -17,22 +17,21 @@ class OrdersController < ApplicationController
     end
 
     def checkout
+      session[:order_id] = nil
     end
 
     def confirmation
       @old_order = @order
       @order = Order.new
       @order.user_id = @current_user.id if @current_user
-      @order.save 
+      @order.save
       session[:order_id] = @order.id
     end
 
     def add_to_cart
-      # add_item_to_order(order = @order) EXAMPLE SAMPLE
-      @order_item = OrderItem.new
-      @order_item.product_id = params[:product]
-      @order_item.order_id   = @order.id
-      @order_item.quantity   = params[:order_item][:quantity] || 1
+
+      @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity] || 1 )
+      raise
       @order_item.save
       redirect_to product_path(params[:product])
     end
@@ -54,11 +53,11 @@ class OrdersController < ApplicationController
       @order.cc_cvv          = params[:cc_cvv]
       @order.billing_zip     = params[:billing_zip]
       @order.save
-      
+
       # session[:order_id] = nil
-      redirect_to action: 'confirmation' 
+      redirect_to action: 'confirmation'
     end
- 
+
   private
   def find_cart
     # begin find_cart
@@ -74,7 +73,7 @@ class OrdersController < ApplicationController
     if @order.nil?
       @order = Order.new
       @order.user_id = @current_user.id if @current_user
-      @order.save     
+      @order.save
     end
 
     session[:order_id] = @order.id
