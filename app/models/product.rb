@@ -1,24 +1,15 @@
 class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
-  # validates :price, format: { with: /^(\d*\.\d{1,2}|\d+)$/,
-  #   message: "must be in $dd.cc format, ex. $15.45" }
-
-  belongs_to :user
-
   has_many :reviews
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :product_to_category_relationships
   has_many :categories, through: :product_to_category_relationships
 
-
-# Validations
-  validates :name,      presence: true,
-                        uniqueness: true
-
-  validates :price,     presence: true,
-                        numericality: {:greater_than => 0}
+  validates_presence_of :name, :description, :price, :stock, :weight, :height, :width, :length
+  validates_uniqueness_of :name
+  validates :price, numericality: {:greater_than => 0}
 
 
   def self.search(search)

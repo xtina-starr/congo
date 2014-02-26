@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20140226201730) do
     t.string   "image"
     t.integer  "stock"
     t.boolean  "retired",     default: false
+    t.integer  "weight"
+    t.integer  "height"
+    t.integer  "width"
+    t.integer  "length"
   end
 
   create_table "reviews", force: true do |t|
