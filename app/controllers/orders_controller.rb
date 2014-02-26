@@ -22,23 +22,23 @@ class OrdersController < ApplicationController
 
     def confirmation
       @old_order = @order
-      @order = Order.new
-      @order.user_id = @current_user.id if @current_user
-      @order.save
-      session[:order_id] = @order.id
+      # @order = Order.new
+      # @order.user_id = @current_user.id if @current_user
+      # @order.save
+      # session[:order_id] = @order.id
     end
 
     def add_to_cart
 
-      @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity] || 1 )
-      raise
+      @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity])
+
       @order_item.save
       redirect_to product_path(params[:product])
     end
 
     def update_cart
       @order_item = OrderItem.find(params[:order_item][:order_item_id])
-      @order_item.quantity   = params[:order_item][:quantity] || 1
+      @order_item.quantity   = params[:order_item][:quantity]
       @order_item.save
       render :cart
     end

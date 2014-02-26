@@ -26,9 +26,9 @@
             <%= f.hidden_field :order_item_id, value: order_item.id %>
               <div class="field">
                 <%= f.label :quantity %>
-                <%= f.number_field :quantity %>
+                <%= f.number_field :quantity, value: order_item.quantity %>
               </div>
-            
+
               <div class="actions">
                 <%= f.submit "Update Cart" %>
               </div>
