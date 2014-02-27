@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219234423) do
+ActiveRecord::Schema.define(version: 20140227004504) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -20,10 +20,9 @@ ActiveRecord::Schema.define(version: 20131219234423) do
   end
 
   create_table "order_items", force: true do |t|
-    t.integer  "quantity"
+    t.integer  "quantity",   default: 1
     t.integer  "product_id"
     t.integer  "order_id"
-    t.integer  "price"
     t.integer  "subtotal"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,15 +31,18 @@ ActiveRecord::Schema.define(version: 20131219234423) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",          default: "pending"
+    t.string   "status",         default: "pending"
     t.integer  "user_id"
     t.string   "email"
-    t.string   "mailing_address"
     t.string   "name_on_cc"
     t.integer  "cc_number"
     t.integer  "cc_expiration"
     t.integer  "cc_cvv"
     t.integer  "billing_zip"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
   create_table "product_to_category_relationships", force: true do |t|
@@ -53,13 +55,16 @@ ActiveRecord::Schema.define(version: 20131219234423) do
   create_table "products", force: true do |t|
     t.text     "name"
     t.text     "description"
-    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "product_id"
     t.string   "image"
     t.integer  "stock"
-    t.boolean  "retired",     default: false
+    t.boolean  "retired",                             default: false
+    t.integer  "weight"
+    t.integer  "height"
+    t.integer  "width"
+    t.integer  "length"
+    t.decimal  "price",       precision: 8, scale: 2
   end
 
   create_table "reviews", force: true do |t|

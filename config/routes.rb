@@ -9,9 +9,9 @@ Congo::Application.routes.draw do
   resources :users do
     resources :reviews
   end
-  
+
   resources :categories
-  
+
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',        via: 'get'
   match '/signin',  to: 'sessions#new',     via: 'get'
@@ -20,7 +20,7 @@ Congo::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
 
-  resources :orders 
+  resources :orders
   match '/cart', to: 'orders#cart', via: 'get'
   match '/add_to_cart', to: 'orders#add_to_cart', via: 'post'
   match '/update_cart', to: 'orders#update_cart', via: 'patch'
@@ -35,7 +35,7 @@ Congo::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
