@@ -29,9 +29,7 @@ class OrdersController < ApplicationController
     end
 
     def add_to_cart
-
       @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity])
-
       @order_item.save
       redirect_to product_path(params[:product])
     end
