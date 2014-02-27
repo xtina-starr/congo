@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     def add_billing_info
       @order.status = "completed"
       @order.email           = params[:email]
-      @order.mailing_address = params[:mailing_address]
+      @order.street_address  = params[:street_address]
       @order.name_on_cc      = params[:name_on_cc]
       @order.cc_number       = params[:cc_number]
       @order.cc_expiration   = params[:cc_expiration]
