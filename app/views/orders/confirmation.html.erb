@@ -1,4 +1,4 @@
-<h1>Thank you for your purchase!</h1>
+<h1>Order Confirmation:</h1>
 <br>
   <p>
     Your order number is <%= "#{@order.id}"%>.  Please keep this confirmation page for your records.
@@ -18,7 +18,7 @@
     <tbody>
       <% total = 0 %>
       <% @old_order.order_items.each do |order_item| %>
-      <% total += order_item.subtotal(order_item.products) %>
+
         <tr>
           <td>
             <%= link_to "#{order_item.product.name}", product_path(Product.find(order_item.product.id)) %>
@@ -30,7 +30,7 @@
             <%= order_item.quantity %>
           </td>
           <td>
-            <%= order_item.subtotal %>
+            <%= order_item%>
           </td>
           <td>
             <%= Time.now.strftime("Ordered on %m/%d/%y at %I:%M%p") %>
