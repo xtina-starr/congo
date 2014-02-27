@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
     end
 
     def checkout
-      # session[:order_id] = nil
     end
 
     def confirm
@@ -60,14 +59,6 @@ class OrdersController < ApplicationController
 
       # session[:order_id] = nil
       redirect_to action: 'confirmation'
-    end
-
-    def update
-      if @order.update(order_params)
-        redirect_to action: 'confirmation'
-      else
-        render :checkout
-      end
     end
 
   private
