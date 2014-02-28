@@ -54,7 +54,9 @@
 
     <div class="field">
       <%= f.label :state %><br>
-      <%= f.select :state, states %>
+      <div id="states_or_provinces">
+      <%= f.select :state, us_states %>
+    </div>
     </div>
 
     <div class="field">
