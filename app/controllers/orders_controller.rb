@@ -20,7 +20,10 @@ class OrdersController < ApplicationController
     end
 
     def confirm
+      @order = Order.find(session[:order_id])
+      @order.update(status: "completed")
       session[:order_id] = nil
+      redirect_to :order_fulfillment
     end
 
     def confirmation
@@ -58,7 +61,7 @@ class OrdersController < ApplicationController
       @order.save
 
       # session[:order_id] = nil
-      redirect_to action: 'confirmation'
+      redirect_to confirmation_path
     end
 
   private
