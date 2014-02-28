@@ -18,4 +18,8 @@ module ApplicationHelper
     cookies.permanent[:user_id] = user.id
     user.update_attribute(:remember_token, remember_token)
   end
+
+  def total(price, qty)
+    price * qty
+  end
 end

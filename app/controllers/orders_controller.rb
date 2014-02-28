@@ -17,7 +17,13 @@ class OrdersController < ApplicationController
     end
 
     def checkout
+    end
+
+    def confirm
+      @order = Order.find(session[:order_id])
+      @order.update(status: "completed")
       session[:order_id] = nil
+      redirect_to :order_fulfillment
     end
 
     def confirmation
@@ -31,7 +37,7 @@ class OrdersController < ApplicationController
     def add_to_cart
       @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity])
       @order_item.save
-      redirect_to product_path(params[:product])
+      redirect_to cart_path
     end
 
     def update_cart
@@ -42,18 +48,20 @@ class OrdersController < ApplicationController
     end
 
     def add_billing_info
-      @order.status = "completed"
-      @order.email           = params[:email]
-      @order.street_address  = params[:street_address]
-      @order.name_on_cc      = params[:name_on_cc]
-      @order.cc_number       = params[:cc_number]
-      @order.cc_expiration   = params[:cc_expiration]
-      @order.cc_cvv          = params[:cc_cvv]
-      @order.billing_zip     = params[:billing_zip]
+      @order.email          = params[:email]
+      @order.street_address = params[:street_address]
+      @order.city           = params[:city]
+      @order.state          = params[:state]
+      @order.country        = params[:country]
+      @order.name_on_cc     = params[:name_on_cc]
+      @order.cc_number      = params[:cc_number]
+      @order.cc_expiration  = params[:cc_expiration]
+      @order.cc_cvv         = params[:cc_cvv]
+      @order.billing_zip    = params[:billing_zip]
       @order.save
 
       # session[:order_id] = nil
-      redirect_to action: 'confirmation'
+      redirect_to confirmation_path
     end
 
   private

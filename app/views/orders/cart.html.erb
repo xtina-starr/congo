@@ -12,6 +12,7 @@
   </thead>
 
   <tbody>
+ <% sum = 0 %>
     <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= link_to "#{order_item.product.name}", product_path(order_item.product.id) %>
@@ -32,14 +33,20 @@
             <% end %>
           </td>
           <td>
-            <%= number_to_currency(order_item.product.price * order_item.quantity) %>
+            <%= number_to_currency(total(order_item.product.price, order_item.quantity)) %>
           </td>
+          <% sum += total(order_item.product.price, order_item.quantity) %>
 
           <td>
             <%= link_to 'Remove from cart', @order, method: :update_cart, data: { confirm: 'Are you sure?' } %>
           </td>
         </tr>
     <% end %>
+        <tr>
+          <td colspan="3"><strong>Order Subtotal: </strong></td>
+          <td> <strong><%= sum %></strong></td>
+          <td></td>
+        </tr>
   </tbody>
 </table>
 

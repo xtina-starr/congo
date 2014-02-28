@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   #validates :order_item, presence: true
   has_many :products, through: :order_items
 
-  validates :email, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip, :street_address, :city, :state, :country,  presence: true, if: :iscompleted?
+  validates_presence_of :email, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip, :street_address, :city, :state, :country, if: :iscompleted?
   #http://edgeguides.rubyonrails.org/active_record_validations.html#using-a-symbol-with-if-and-unless
 
   #Validation still broken -> Kerri is researching.

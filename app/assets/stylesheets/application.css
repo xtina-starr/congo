@@ -116,7 +116,9 @@ input.button:hover {
     color:#0192b5;
 }
 
-
+.button_to {
+    width: 100px;
+}
 
 /* CSS for Menu */
 
