@@ -16,8 +16,9 @@
 
 $(document).ready(function() {
 
-  var us = [ "AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MP","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UM","UT","VA","VI","VT","WA","WI","WV","WY"];
-  var ca = ["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"];
+  var us = [ "AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MP","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UM","UT","VA","VI","VT","WA","WI","WV","WY"],
+      ca = ["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"],
+      sop = $('#states_or_provinces');
 
 
   function options(country) {
@@ -32,11 +33,10 @@ $(document).ready(function() {
         select.appendChild(opt);
     }
 
-    $('#states_or_provinces').append(select);
+    sop.append(select);
   }
 
   $("#order_country").on("change", function() {
-   var sop = $('#states_or_provinces');
 
     sop.find('select').remove();
 
