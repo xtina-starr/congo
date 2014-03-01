@@ -22,16 +22,15 @@ class OrdersController < ApplicationController
     def confirm
       @order = Order.find(session[:order_id])
       @order.update(status: "completed")
+      if @order.save
       session[:order_id] = nil
       redirect_to :order_fulfillment
+    else
+      render :confirmation, notice: "No."
+    end
     end
 
     def confirmation
-      @old_order = @order
-      # @order = Order.new
-      # @order.user_id = @current_user.id if @current_user
-      # @order.save
-      # session[:order_id] = @order.id
     end
 
     def add_to_cart
@@ -48,20 +47,10 @@ class OrdersController < ApplicationController
     end
 
     def add_billing_info
-      @order.email          = params[:email]
-      @order.street_address = params[:street_address]
-      @order.city           = params[:city]
-      @order.state          = params[:state]
-      @order.country        = params[:country]
-      @order.name_on_cc     = params[:name_on_cc]
-      @order.cc_number      = params[:cc_number]
-      @order.cc_expiration  = params[:cc_expiration]
-      @order.cc_cvv         = params[:cc_cvv]
-      @order.billing_zip    = params[:billing_zip]
-      @order.save
-
-      # session[:order_id] = nil
-      redirect_to confirmation_path
+      @order.update(order_params)
+      if @order.save
+        redirect_to confirmation_path
+      end
     end
 
   private
@@ -85,6 +74,10 @@ class OrdersController < ApplicationController
     session[:order_id] = @order.id
 
     # end find_cart
+  end
+
+  def order_params
+    params.require(:order).permit(:email, :street_address, :city, :state, :country, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip)
   end
 end
 
