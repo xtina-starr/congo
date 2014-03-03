@@ -81,11 +81,11 @@ class OrdersController < ApplicationController
       @order = Order.find(session[:order_id])
       @order.update(status: "completed")
       if @order.save
-      session[:order_id] = nil
-      redirect_to :order_fulfillment
-    else
-      render :confirmation, notice: "Something went wrong."
-    end
+        session[:order_id] = nil
+        redirect_to :order_fulfillment
+      else
+        render :confirmation, notice: "Something went wrong."
+      end
     end
 
   private
