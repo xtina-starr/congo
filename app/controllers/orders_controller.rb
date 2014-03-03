@@ -44,14 +44,18 @@ class OrdersController < ApplicationController
                                          postal_code: @order.billing_zip
                                          }
                           } }
-      shipping = HTTParty.post('http://localhost:4000/index.json', options )
+      HTTParty.post('http://localhost:4000/index.json', options )
 
     end
 
     def confirmation
-      shipping_options
-      raise
+      @shipping = []
+      shipping_options.parsed_response.each do |r|
+        r["price_in_cents"] = r["price_in_cents"].to_f/100
+        @shipping << r.values.join(": $")
+      end
     end
+
 
     def add_to_cart
       @order_item = OrderItem.new(product_id: params[:product], order_id: @order.id, quantity: params[:order_item][:quantity])
