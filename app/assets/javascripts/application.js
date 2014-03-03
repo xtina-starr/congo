@@ -32,14 +32,11 @@ $(document).ready(function() {
         opt.innerHTML = country[i];
         select.appendChild(opt);
     }
-
     sop.append(select);
   }
 
   $("#order_country").on("change", function() {
-
     sop.find('select').remove();
-
     if (this.value === 'CA') {
       options(ca);
     }
