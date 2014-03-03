@@ -54,12 +54,14 @@
 
     <div class="field">
       <%= f.label :state %><br>
-      <%= f.text_area :state %>
+      <div id="states_or_provinces">
+      <%= f.select :state, us_states %>
+    </div>
     </div>
 
     <div class="field">
       <%= f.label :country %><br>
-      <%= f.text_area :country %>
+      <%= f.select :country, only_us_and_canada, {selected: 'US'} %>
     </div>
 
     <div class="field">
