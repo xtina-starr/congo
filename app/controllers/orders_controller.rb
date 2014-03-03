@@ -30,19 +30,27 @@ class OrdersController < ApplicationController
         height += product.height
         width  += product.width
       end
-      options = { body:  { width: width,
-                           length: length,
-                           height: height,
-                           weight: width,
-                           country: @order.country,
-                           province: @order.state,
-                           city: @order.city,
-                           postal_code: @order.billing_zip} }
-      # shipping = HTTParty.post('url.json', options )
+      options = { body:  {
+                          packages: {
+                                      width:  width,
+                                      length: length,
+                                      height: height,
+                                      weight: weight
+                           },
+                           destination: {
+                                         country:     @order.country,
+                                         province:    @order.state,
+                                         city:        @order.city,
+                                         postal_code: @order.billing_zip
+                                         }
+                          } }
+      shipping = HTTParty.post('http://localhost:4000/index.json', options )
+
     end
 
     def confirmation
       shipping_options
+      raise
     end
 
     def add_to_cart
