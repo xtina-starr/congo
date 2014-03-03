@@ -19,18 +19,30 @@ class OrdersController < ApplicationController
     def checkout
     end
 
-    def confirm
-      @order = Order.find(session[:order_id])
-      @order.update(status: "completed")
-      if @order.save
-      session[:order_id] = nil
-      redirect_to :order_fulfillment
-    else
-      render :confirmation, notice: "No."
-    end
+    def shipping_options
+      weight = 0
+      length = 0
+      height = 0
+      width  = 0
+      @order.products.each do |product|
+        weight += product.weight
+        length += product.length
+        height += product.height
+        width  += product.width
+      end
+      options = { body:  { width: width,
+                           length: length,
+                           height: height,
+                           weight: width,
+                           country: @order.country,
+                           province: @order.state,
+                           city: @order.city,
+                           postal_code: @order.billing_zip} }
+      # shipping = HTTParty.post('url.json', options )
     end
 
     def confirmation
+      shipping_options
     end
 
     def add_to_cart
@@ -51,6 +63,17 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to confirmation_path
       end
+    end
+
+    def confirm
+      @order = Order.find(session[:order_id])
+      @order.update(status: "completed")
+      if @order.save
+      session[:order_id] = nil
+      redirect_to :order_fulfillment
+    else
+      render :confirmation, notice: "Something went wrong."
+    end
     end
 
   private
