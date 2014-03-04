@@ -41,8 +41,26 @@
         </tr>
          <tr>
           <td colspan="3">Shipping: </td>
-          <td>
-           0.00
+          <td id="ship_ops">
+           <%= form_for @order do |f| %>
+                <% if @order.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                    <ul>
+                    <% @order.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="field shipping">
+
+                  <p><%= f.select :shipping_cost, @shipping %>
+                  <%= f.submit  %></p>
+                </div>
+                <% end %>
            </td>
           <td></td>
         </tr>
@@ -59,7 +77,7 @@
 </table>
 </div>
 
-  <div class="shipping_options">
+  <!-- <div class="shipping_options">
     <%= form_for @order do |f| %>
       <% if @order.errors.any? %>
         <div id="error_explanation">
@@ -85,7 +103,7 @@
       </div>
 
     <% end %>
-  </div>
+  </div> -->
 </div>
 
 
