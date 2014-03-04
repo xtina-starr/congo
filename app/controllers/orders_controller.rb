@@ -50,10 +50,15 @@ class OrdersController < ApplicationController
 
     def confirmation
       @shipping = []
-      shipping_options.parsed_response.each do |r|
+      shipping_options.parsed_response["ups"].each do |r|
         r["price_in_cents"] = r["price_in_cents"].to_f/100
         @shipping << r.values.join(": $")
       end
+      shipping_options.parsed_response["fedex"].each do |r|
+        r["price_in_cents"] = r["price_in_cents"].to_f/100
+        @shipping << r.values.join(": $")
+      end
+      @shipping
     end
 
 
