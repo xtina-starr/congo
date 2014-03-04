@@ -12,6 +12,13 @@ class OrdersController < ApplicationController
       @orders = Order.all
     end
 
+    def update
+        @order.update(shipping_cost: params[:order][:shipping_cost] = params[:order][:shipping_cost].split("$").last.to_f)
+        if @order.save
+          redirect_to :back
+        end
+    end
+
     def cart
       @order_item = @order.order_items
     end
@@ -117,7 +124,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:email, :street_address, :city, :state, :country, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip)
+    params.require(:order).permit(:email, :street_address, :city, :state, :country, :name_on_cc, :cc_number, :cc_expiration, :cc_cvv, :billing_zip, :shipping_cost)
   end
 end
 
