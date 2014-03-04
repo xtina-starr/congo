@@ -86,6 +86,60 @@ form    {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 
+.wrap {
+    display: inline-block;
+    width: 100%;
+}
+
+.wrap .actions input {
+    width:auto;
+}
+
+.order {
+    float: left;
+
+
+}
+
+.wrap .shipping_options, {
+    float: right;
+    width:45%;
+
+
+}
+.shipping form {
+    background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    float:right;
+    /*margin:auto;*/
+    /*width: 45%;*/
+    /*height:40%;*/
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 24px;
+    font-weight: bold;
+    color: #47515f;
+    text-decoration: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding:10px;
+    border: 1px solid #999;
+    border: inset 1px solid #333;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.shipping input    {
+    height:auto;
+    width:auto;
+    display:inline-block;
+    border:none;
+    box-shadow:none;
+}
+
 input#product_stock {
     max-width: 50px;
 }
