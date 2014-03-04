@@ -70,7 +70,11 @@
         </tr>
          <tr>
           <td colspan="3"><strong> Order Total: </strong></td>
+          <% if @order.shipping_cost %>
           <td> <strong><%= sum + @order.shipping_cost %></strong></td>
+          <% else %>
+          <td> <strong><%= sum %></strong></td>
+          <% end %>
           <td></td>
         </tr>
         <tr></tr>
