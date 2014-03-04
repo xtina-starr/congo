@@ -41,6 +41,10 @@
         </tr>
          <tr>
           <td colspan="3">Shipping: </td>
+          <td><%= @order.shipping_cost if @order.shipping_cost %></td>
+        </tr>
+          <tr>
+            <td>Select shipping method:</td>
           <td id="ship_ops">
            <%= form_for @order do |f| %>
                 <% if @order.errors.any? %>
