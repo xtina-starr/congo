@@ -1,10 +1,12 @@
 <h1>Order Confirmation:</h1>
-<br>
+
   <p>
     Your order number is <%= @order.id %>.  Please keep this confirmation page for your records.
   </p>
   <p><%= link_to "Edit Order", cart_path%></p>
 
+<div class="wrap">
+  <div class="order">
  <table>
   <thead>
     <tr>
@@ -39,20 +41,32 @@
         </tr>
          <tr>
           <td colspan="3">Shipping: </td>
-          <td>
-            <select>
-              <% @shipping.each do |service| %>
-              <option>
-                <%= service %>
-              </option>
-              <% end %>
-            </select>
+          <td id="ship_ops">
+           <%= form_for @order do |f| %>
+                <% if @order.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                    <ul>
+                    <% @order.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="field shipping">
+
+                  <p><%= f.select :shipping_cost, @shipping %>
+                  <%= f.submit  %></p>
+                </div>
+                <% end %>
            </td>
           <td></td>
         </tr>
          <tr>
           <td colspan="3"><strong> Order Total: </strong></td>
-          <td> <strong>...</strong></td>
+          <td> <strong><%= sum %></strong></td>
           <td></td>
         </tr>
         <tr></tr>
@@ -61,6 +75,36 @@
         </tr>
   </tbody>
 </table>
+</div>
+
+  <!-- <div class="shipping_options">
+    <%= form_for @order do |f| %>
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field shipping">
+        <%= f.label :shipping_cost, "Shipping:" %><br>
+       <%  @shipping.each do |option| %>
+        <p><%= f.radio_button :shipping_cost, option %><%= option %><p>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit  %>
+      </div>
+
+    <% end %>
+  </div> -->
+</div>
 
 
 
