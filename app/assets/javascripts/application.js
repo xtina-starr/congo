@@ -56,7 +56,7 @@ $("#order_shipping_cost").on("change", function() {
       success: function(data, textStatus, xhr) {
         cost.remove();
 
-        var shipping_cost = "<td id='cost'>$" + parseFloat(data.shipping_cost).toFixed(2) + "</td>",
+        var shipping_cost = "<td id='cost'><strong>$" + parseFloat(data.shipping_cost).toFixed(2) + "</strong></td>",
             total = parseFloat($("#subtotal").html().split("$")[1]) + parseFloat(data.shipping_cost);
 
         $(".shipping_row").append(shipping_cost);
