@@ -46,11 +46,11 @@ $(document).ready(function() {
   });
 
 
-
 $("#order_shipping_cost").on("change", function() {
 
-      var cost = $("#cost"),
-          shipping_row = $(".shipping_row");
+    var cost = $("#cost"),
+        shipping_row = $(".shipping_row");
+
     $.ajax({
       url: $(this).parents('form').attr("action"),
       type: 'PATCH',
@@ -59,9 +59,9 @@ $("#order_shipping_cost").on("change", function() {
       success: function(data, textStatus, xhr) {
         cost.remove();
 
-        var formatted_num = parseFloat(data.shipping_cost).toFixed(2)
+        var formatted_num = parseFloat(data.shipping_cost).toFixed(2),
             shipping_cost = "<td id='cost'>$"+ formatted_num + "</td>",
-            value = $("#total").html().split("$")[1],
+            value = $("#subtotal").html().split("$")[1],
             total = parseFloat(value)+ parseFloat(data.shipping_cost);
 
         shipping_row.append(shipping_cost);
@@ -72,6 +72,5 @@ $("#order_shipping_cost").on("change", function() {
       }
     });
     return false;
-
   });
 });

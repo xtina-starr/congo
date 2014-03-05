@@ -56,6 +56,7 @@ class OrdersController < ApplicationController
                           } }
       HTTParty.post('http://localhost:4000/index.json', options )
 
+
     end
 
     def confirmation

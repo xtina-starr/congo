@@ -36,7 +36,7 @@
     <% end %>
         <tr>
           <td colspan="3"><strong>Order Subtotal: </strong></td>
-          <td> <strong><%= number_to_currency(sum) %></strong></td>
+          <td id="subtotal"> <strong><%= number_to_currency(sum) %></strong></td>
           <td></td>
         </tr>
          <tr class="shipping_row">
@@ -61,7 +61,7 @@
 
                 <div class="field shipping">
 
-                  <p><%= f.select :shipping_cost, @shipping, include_blank: '-- Select Shipping --'%>
+                  <p><%= f.select :shipping_cost, @shipping, include_blank: '-- Select --'%>
                   <%= f.submit %></p>
                 </div>
                 <% end %>
