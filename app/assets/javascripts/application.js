@@ -48,9 +48,6 @@ $(document).ready(function() {
 
 $("#order_shipping_cost").on("change", function() {
 
-    var cost = $("#cost"),
-        shipping_row = $(".shipping_row");
-
     $.ajax({
       url: $(this).parents('form').attr("action"),
       type: 'PATCH',
@@ -59,16 +56,14 @@ $("#order_shipping_cost").on("change", function() {
       success: function(data, textStatus, xhr) {
         cost.remove();
 
-        var formatted_num = parseFloat(data.shipping_cost).toFixed(2),
-            shipping_cost = "<td id='cost'>$"+ formatted_num + "</td>",
-            value = $("#subtotal").html().split("$")[1],
-            total = parseFloat(value)+ parseFloat(data.shipping_cost);
+        var shipping_cost = "<td id='cost'>$" + parseFloat(data.shipping_cost).toFixed(2) + "</td>",
+            total = parseFloat($("#subtotal").html().split("$")[1]) + parseFloat(data.shipping_cost);
 
-        shipping_row.append(shipping_cost);
-        $("#total").html("$"+total.toFixed(2));
+        $(".shipping_row").append(shipping_cost);
+        $("#total").html("$" + total.toFixed(2));
       },
       error: function(xhr, textStatus, errorThrown) {
-        alert("There was a problem");
+        alert("There was a problem: try, try again. Then quit. No use being a damn fool about it.");
       }
     });
     return false;
