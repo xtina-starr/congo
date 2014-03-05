@@ -23,7 +23,6 @@ class OrdersController < ApplicationController
     end
 
     def cart
-      @order_item = @order.order_items
     end
 
     def checkout
