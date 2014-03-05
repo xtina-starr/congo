@@ -4,7 +4,6 @@ body {
 
 h1 {
     font-family: verdana;
-    width: 25%;
     margin: auto;
     text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
 }
@@ -94,6 +93,14 @@ form    {
 
 .order {
     float: left;
+}
+
+.order th{
+    text-align:left;
+}
+
+.order form {
+margin-right:auto;
 }
 
 .wrap .shipping_options, {
