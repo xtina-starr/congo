@@ -15,7 +15,10 @@ class OrdersController < ApplicationController
     def update
         @order.update(shipping_cost: params[:order][:shipping_cost] = params[:order][:shipping_cost].split("$").last.to_f)
         if @order.save
-          redirect_to :back
+          respond_to do |format|
+            format.html {redirect_to :back}
+            format.json {render json: @order}
+          end
         end
     end
 

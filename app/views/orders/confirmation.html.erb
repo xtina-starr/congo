@@ -39,9 +39,9 @@
           <td> <strong><%= number_to_currency(sum) %></strong></td>
           <td></td>
         </tr>
-         <tr>
+         <tr class="shipping_row">
           <td colspan="3">Shipping: </td>
-          <td><%= number_to_currency(@order.shipping_cost) if @order.shipping_cost %></td>
+          <td id="cost"><%= number_to_currency(@order.shipping_cost) if @order.shipping_cost %></td>
         </tr>
           <tr>
             <td>Select shipping method:</td>
@@ -61,7 +61,7 @@
 
                 <div class="field shipping">
 
-                  <p><%= f.select :shipping_cost, @shipping %>
+                  <p><%= f.select :shipping_cost, @shipping, include_blank: '-- Select Shipping --'%>
                   <%= f.submit %></p>
                 </div>
                 <% end %>
@@ -71,10 +71,12 @@
          <tr>
           <td colspan="3"><strong> Order Total: </strong></td>
           <% if @order.shipping_cost %>
-          <td> <strong><%= number_to_currency(sum + @order.shipping_cost )%></strong></td>
+          <td id="total">
+           <strong><%= number_to_currency(sum + @order.shipping_cost )%></strong>
           <% else %>
-          <td> <strong><%= number_to_currency(sum)%></strong></td>
+          <td> <strong><%= number_to_currency(sum)%></strong>
           <% end %>
+          </td>
           <td></td>
         </tr>
         <tr></tr>
