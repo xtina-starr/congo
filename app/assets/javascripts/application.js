@@ -44,4 +44,28 @@ $(document).ready(function() {
        options(us);
     }
   });
+
+
+$("#order_shipping_cost").on("change", function() {
+
+    $.ajax({
+      url: $(this).parents('form').attr("action"),
+      type: 'PATCH',
+      dataType: 'json',
+      data: {order: {shipping_cost: $(":selected").val() }},
+      success: function(data, textStatus, xhr) {
+        $("#cost").remove();
+
+        var shipping_cost = "<td id='cost'>$" + parseFloat(data.shipping_cost).toFixed(2) + "</td>",
+            total = parseFloat($("#subtotal").html().split("$")[1]) + parseFloat(data.shipping_cost);
+
+        $(".shipping_row").append(shipping_cost);
+        $("#total").html("$" + total.toFixed(2));
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        alert("There was a problem: try, try again. Then quit. No use being a damn fool about it.");
+      }
+    });
+    return false;
+  });
 });
