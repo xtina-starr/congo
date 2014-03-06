@@ -31,17 +31,17 @@
 
     <div class="field" id="credit_card_number">
       <%= f.label :cc_number %><br>
-      <%= f.number_field :cc_number, class: "credit_card_number" %>
+      <%= f.text_field :cc_number, class: "credit_card_number" %>
     </div>
 
     <div class="field" id="credit_card_expiry">
       <%= f.label :cc_expiration %><br>
-      <%= f.number_field :cc_expiration, class: "credit_card_expiry" %>
+      <%= f.text_field :cc_expiration, class: "credit_card_expiry" %>
     </div>
 
     <div class="field" id="credit_card_cvc">
       <%= f.label :cc_cvv %><br>
-      <%= f.number_field :cc_cvv, class: "credit_card_cvc" %>
+      <%= f.text_field :cc_cvv, class: "credit_card_cvc" %>
     </div>
 
     <div class="field">
@@ -66,9 +66,9 @@
       <%= f.select :country, only_us_and_canada, {selected: 'US'} %>
     </div>
 
-    <div class="field" id="data-formance_length=5">
+    <div class="field" id="number">
       <%= f.label :billing_zip %><br>
-      <%= f.number_field :billing_zip, class: "data-formance_length=5" %>
+      <%= f.text_field :billing_zip, :'data-formance_length' => 5, class: "number" %>
     </div>
 
     <div class="actions">

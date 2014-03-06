@@ -73,20 +73,16 @@ $("#order_shipping_cost").on("change", function() {
     fields = ['credit_card_number',
               'credit_card_expiry',
               'credit_card_cvc',
-              'dd_mm_yyyy',
-              'yyyy_mm_dd',
               'email',
               'number',
-              'phone_number',
-              'postal_code',
-              'time_yy_mm']
+              'postal_code']
 
      $.each( fields, function (index, value) {
         $('input.'+value).formance('format_'+value)
                          .addClass('form-control')
                          .wrap('<div class=\'form-group\' />')
                          .parent()
-                            .append('<label class=\'control-label\'>Test</label>');
+                            .append('<label class=\'control-label\'></label>');
 
         $('input.'+value).on('keyup change blur', function (value) {
             return function (event) {
