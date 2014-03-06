@@ -25,4 +25,48 @@ class Order < ActiveRecord::Base
   end
 
 
+  def shipping_options
+    weight = 0
+    length = 0
+    height = 0
+    width  = 0
+    products.each do |product|
+      weight += product.weight
+      length += product.length
+      height += product.height
+      width  += product.width
+    end
+    options = { body:  {
+                        packages: {
+                                    width:  width,
+                                    length: length,
+                                    height: height,
+                                    weight: weight
+                         },
+                         destination: {
+                                       country:     country,
+                                       province:    state,
+                                       city:        city,
+                                       postal_code: billing_zip
+                                       }
+                        } }
+    HTTParty.post('http://localhost:4000/index.json', options )
+  end
+
+  def shipping_ops
+    shipping = []
+    if shipping_options.response.message.include?("OK")
+        shipping_options.parsed_response["ups"].each do |r|
+          r["price_in_cents"] = r["price_in_cents"].to_f/100
+        shipping << r.values.join(": $")
+      end
+        shipping_options.parsed_response["fedex"].each do |r|
+          r["price_in_cents"] = r["price_in_cents"].to_f/100
+        shipping << r.values.join(": $")
+      end
+      shipping
+    end
+  end
+
+
 end
