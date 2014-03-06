@@ -1,5 +1,7 @@
 <h1>Checkout:</h1>
 
+
+<%= notice %>
 <td>
   <%= form_for @order, url: add_billing_info_path do |f| %>
 
@@ -17,29 +19,29 @@
       </div>
   <% end %>
 
-    <div class="field">
+    <div class="field" id="email" >
       <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </div>
+      <%= f.text_field :email, class: "email", :'data-formance_algorithm' => 'complex' %>
+    </div><div id="text"></div>
 
     <div class="field">
       <%= f.label :name_on_cc %><br>
       <%= f.text_field :name_on_cc  %>
     </div>
 
-    <div class="field">
+    <div class="field" id="credit_card_number">
       <%= f.label :cc_number %><br>
-      <%= f.number_field :cc_number %>
+      <%= f.text_field :cc_number, class: "credit_card_number" %>
     </div>
 
-    <div class="field">
+    <div class="field" id="credit_card_expiry">
       <%= f.label :cc_expiration %><br>
-      <%= f.number_field :cc_expiration %>
+      <%= f.text_field :cc_expiration, class: "credit_card_expiry" %>
     </div>
 
-    <div class="field">
+    <div class="field" id="credit_card_cvc">
       <%= f.label :cc_cvv %><br>
-      <%= f.number_field :cc_cvv %>
+      <%= f.text_field :cc_cvv, class: "credit_card_cvc" %>
     </div>
 
     <div class="field">
@@ -64,9 +66,9 @@
       <%= f.select :country, only_us_and_canada, {selected: 'US'} %>
     </div>
 
-    <div class="field">
+    <div class="field" id="number">
       <%= f.label :billing_zip %><br>
-      <%= f.number_field :billing_zip %>
+      <%= f.text_field :billing_zip, :'data-formance_length' => 5, class: "number" %>
     </div>
 
     <div class="actions">

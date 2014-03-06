@@ -60,15 +60,20 @@ class OrdersController < ApplicationController
 
     def confirmation
       @shipping = []
-      shipping_options.parsed_response["ups"].each do |r|
-        r["price_in_cents"] = r["price_in_cents"].to_f/100
-        @shipping << r.values.join(": $")
+      if shipping_options.response.message.include?("Ok")
+        shipping_options.parsed_response["ups"].each do |r|
+          r["price_in_cents"] = r["price_in_cents"].to_f/100
+          @shipping << r.values.join(": $")
+        end
+        shipping_options.parsed_response["fedex"].each do |r|
+          r["price_in_cents"] = r["price_in_cents"].to_f/100
+          @shipping << r.values.join(": $")
+        end
+        @shipping
+      else
+        flash.now[:notice] = "You've entered an incorrect value. Please check the form."
+        render :checkout
       end
-      shipping_options.parsed_response["fedex"].each do |r|
-        r["price_in_cents"] = r["price_in_cents"].to_f/100
-        @shipping << r.values.join(": $")
-      end
-      @shipping
     end
 
 
