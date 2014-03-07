@@ -28,48 +28,9 @@ class OrdersController < ApplicationController
     def checkout
     end
 
-    def shipping_options
-      weight = 0
-      length = 0
-      height = 0
-      width  = 0
-      @order.products.each do |product|
-        weight += product.weight
-        length += product.length
-        height += product.height
-        width  += product.width
-      end
-      options = { body:  {
-                          packages: {
-                                      width:  width,
-                                      length: length,
-                                      height: height,
-                                      weight: weight
-                           },
-                           destination: {
-                                         country:     @order.country,
-                                         province:    @order.state,
-                                         city:        @order.city,
-                                         postal_code: @order.billing_zip
-                                         }
-                          } }
-      HTTParty.post('http://localhost:4000/index.json', options )
-
-
-    end
-
     def confirmation
-      @shipping = []
-      if shipping_options.response.message.include?("Ok")
-        shipping_options.parsed_response["ups"].each do |r|
-          r["price_in_cents"] = r["price_in_cents"].to_f/100
-          @shipping << r.values.join(": $")
-        end
-        shipping_options.parsed_response["fedex"].each do |r|
-          r["price_in_cents"] = r["price_in_cents"].to_f/100
-          @shipping << r.values.join(": $")
-        end
-        @shipping
+      if @order.shipping_ops
+        @shipping = @order.shipping_ops
       else
         flash.now[:notice] = "You've entered an incorrect value. Please check the form."
         render :checkout
@@ -98,7 +59,6 @@ class OrdersController < ApplicationController
     end
 
     def confirm
-      @order = Order.find(session[:order_id])
       @order.update(status: "completed")
       if @order.save
         session[:order_id] = nil

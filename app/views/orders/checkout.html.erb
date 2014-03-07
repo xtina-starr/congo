@@ -46,12 +46,12 @@
 
     <div class="field">
       <%= f.label :street_address %><br>
-      <%= f.text_area :street_address %>
+      <%= f.text_field :street_address %>
     </div>
 
     <div class="field">
       <%= f.label :city %><br>
-      <%= f.text_area :city %>
+      <%= f.text_field :city %>
     </div>
 
     <div class="field">
@@ -72,7 +72,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Next" %>
+      <%= f.submit "Next", class: 'form_button' %>
     </div>
 
     <% end %>
